@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default" role="navigation">
 	<div class="container-fluid">
-		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-3 cold-lg-offset-3">
+		<div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 col-md-offset-2 col-lg-offset-3">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 					<span class="sr-only">Toggle navigation</span>
@@ -13,7 +13,68 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Sign in</a></li>
+					<% if signed_in? %>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Projects<span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">All Projects</a></li>
+							<li><a href="#">Add New</a></li>
+							<li><a href="#">All Open</a></li>
+							<li><a href="#">All Closed</a></li>
+							<li><a href="#">Search</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a  class="dropdown-toggle" data-toggle="dropdown">Translators<span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">All Translators</a></li>
+							<li><a href="#">Add New</a></li>
+							<li><a href="#">Search</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a  class="dropdown-toggle" data-toggle="dropdown">Purchase Orders<span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">All Orders</a></li>
+							<li><a href="#">Add New</a></li>
+							<li><a href="#">All Open</a></li>
+							<li><a href="#">All Closed</a></li>
+							<li><a href="#">Search</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Clients<span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">All Clients</a></li>
+							<li><a href="#">Add New</a></li>
+							<li><a href="#">Search</a></li>
+						</ul>
+					</li>
+
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown">Users<span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">All Users</a></li>
+							<li><%= link_to "New Manager", newuser_path %></li>
+						</ul>
+					</li>
+
+			        <li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %><span class="caret"></span><a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Edit Profile</a></li>
+							<li><a href="#">Settings</a></li>
+							<li class="divider"></li>
+							<li><%= link_to "Sign out", signout_path, :method => :delete %></li>
+						</ul>
+					</li>
+
+					<% else %>
+						<li><%= link_to "Sign in", signin_path %></li>
+					<% end %>
 				</ul>
 			</div>
 		</div>
