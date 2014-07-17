@@ -7,6 +7,8 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :type
 
       t.timestamps
+
+      Users.new(:name => "Adam Smith", :email => "adam.smith18@ntlworld.com", :password_digest => "testing")
     end
   end
 end

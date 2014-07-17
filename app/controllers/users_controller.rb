@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-  	User.find(params[:name])
+  	User.find_by(:name, params[:name])
   	flash[:success] = "Manager deleted."
   	redirect_to allmanagers_path
   end
