@@ -2,7 +2,6 @@ class TranslatorsController < ApplicationController
 	before_action :signed_in_user
 
 	def index
-		@translators = Translator.search
 		@translators ||= Translator.all
 	end
 
