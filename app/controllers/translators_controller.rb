@@ -1,6 +1,6 @@
 class TranslatorsController < ApplicationController
 	before_action :signed_in_user
-	
+
 	def index
 		@translators = Translator.all
 	end
@@ -17,7 +17,7 @@ class TranslatorsController < ApplicationController
 		@translator = Translator.new(translator_params)
 	  	if @translator.save
 	  		flash[:success] = "Translator created."
-	  		redirect_to alltranslator_path
+	  		redirect_to alltranslators_path
 	  	else
 	  		render 'new'
 	  	end
@@ -37,7 +37,7 @@ class TranslatorsController < ApplicationController
   	end
 
   	def destroy
-	  	Translator.find(params[:id])
+	  	Translator.find(params[:id]).destroy
 	  	flash[:success] = "Translator deleted."
 	  	redirect_to alltranslators_path
   	end

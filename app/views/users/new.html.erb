@@ -3,7 +3,7 @@
 <h1 class="center"> Create New Manager </h1>
 <div class="well">
 	<%= form_for(@user) do |f| %>
-	<%= render 'shared/error_messages' %>
+	<%= render 'shared/error_messages' object: f.object %>
 	<div class="form-group">
 		<%= f.label :name %>
 		<%= f.text_field :name, class: "form-control"  %>
@@ -23,7 +23,7 @@
 		<%= f.label :password_confirmation %>
 		<%= f.password_field :password_confirmation, class: "form-control"  %>
 	<div>
-	<%= f.submit "Create New Manager", class: "btn btn-large btn-primary" %>
+	<%= f.submit "Create New Manager", class: "btn btn-large btn-primary form-control" %>
 	<% end %>
 </div>
 </div>
