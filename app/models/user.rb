@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	before_create :create_remember_token
 	validates :name, presence: true
 	validates :email, presence: true, uniqueness: { case_sensitive: false}
+	validates :signature, length: { minimum: 6 }
 	has_secure_password
 	validates :password, length: { minimum: 6 }
 	validates :password_confirmation, presence: true

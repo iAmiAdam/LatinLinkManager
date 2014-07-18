@@ -29,11 +29,11 @@ class UsersController < ApplicationController
 
   def update
   	@user = current_user
-  	if @user.update_attributes(user_params)
-  		redirect_to root_path
-  	else
-  		render 'edit'
-  	end
+    	if @user.update_attributes(user_params)
+    		redirect_to editaccount_path
+    	else
+    		render 'edit'
+    	end
   end
 
   def destroy
@@ -42,10 +42,14 @@ class UsersController < ApplicationController
   	redirect_to allmanagers_path
   end
 
+  def settings
+    @user = current_user
+  end
+
   private
 
   def user_params
-  	params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:name, :email, :password, :password_confirmation, :signature)
   end
 
   def correct_user
