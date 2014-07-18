@@ -2,7 +2,8 @@ class TranslatorsController < ApplicationController
 	before_action :signed_in_user
 
 	def index
-		@translators = Translator.all
+		@translators = Translator.search
+		@translators ||= Translator.all
 	end
 
 	def show 
@@ -44,11 +45,11 @@ class TranslatorsController < ApplicationController
 
   	private
 
-  	def translator_params 
-  		params.require(:translator).permit(:name, :email, :rate)
-  	end
+	  	def translator_params 
+	  		params.require(:translator).permit(:name, :email, :rate)
+	  	end
 
-  	def signed_in_user
-  		redirect_to root_url, notice: "Please Sign in." unless signed_in?
-  	end
+	  	def signed_in_user
+	  		redirect_to root_url, notice: "Please Sign in." unless signed_in?
+	  	end
 end

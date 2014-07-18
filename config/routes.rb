@@ -1,6 +1,7 @@
 LatinLinkManager::Application.routes.draw do
   resources :users
   resources :translators
+  resources :searches
   resources :sessions, only: [:new, :create, :destroy]
   root 'sessions#new'
   match '/signin', to: 'sessions#new', via: 'get'
@@ -10,6 +11,7 @@ LatinLinkManager::Application.routes.draw do
   match '/allmanagers', to: 'users#index', via: 'get'
   match '/alltranslators', to: 'translators#index', via: 'get'
   match '/newtranslator', to: 'translators#new', via: 'get'
+  match '/search/translator', to: 'searches#new', via: 'get'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
