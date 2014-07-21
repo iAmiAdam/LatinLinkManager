@@ -1,4 +1,5 @@
-class ClientsController < ApplicationController
+class ClientsController < ApplicationCon
+	before_action :signed_in_user, only: [:index, :edit, :update]
 
 	def index 
 		@clients = Client.all
@@ -44,4 +45,8 @@ class ClientsController < ApplicationController
 		def client_params
 			params.require(:client).permit(:name, :contact)
 		end
+
+		def signed_in_user
+  			redirect_to root_url, notice: "Please Sign in." unless signed_in?
+  		end
 end
