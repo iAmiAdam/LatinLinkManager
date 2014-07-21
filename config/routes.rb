@@ -1,6 +1,7 @@
 LatinLinkManager::Application.routes.draw do
   resources :users
   resources :translators
+  resources :clients
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   root 'sessions#new'
