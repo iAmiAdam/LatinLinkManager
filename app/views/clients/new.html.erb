@@ -3,7 +3,7 @@
 <h1 class="center"> Create New Client </h1>
 <div class="well">
 	<%= form_for(@client) do |f| %>
-	<%= render 'shared/error_messages' object: f.object %>
+	<%= render 'shared/error_messages', object: f.object %>
 	<div class="form-group">
 		<%= f.label :name %>
 		<%= f.text_field :name, class: "form-control"  %>

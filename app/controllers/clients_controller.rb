@@ -1,5 +1,5 @@
-class ClientsController < ApplicationCon
-	before_action :signed_in_user, only: [:index, :edit, :update]
+class ClientsController < ApplicationController
+	before_action :signed_in_user
 
 	def index 
 		@clients = Client.all
@@ -7,6 +7,7 @@ class ClientsController < ApplicationCon
 
 	def show
 		@client = Client.find(params[:id])
+	end
 
 	def new
 		@client = Client.new
@@ -38,6 +39,7 @@ class ClientsController < ApplicationCon
 	def destroy 
 		Client.find(params[:id]).destroy
 		flash[:success] = "Client deleted"
+		redirect_to clients_path
 	end
 
 	private
