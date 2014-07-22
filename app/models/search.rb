@@ -1,5 +1,5 @@
 class Search < ActiveRecord::Base
-
+	validates :table, presence: true
 
 	def translators
 		@translators ||= find_translators

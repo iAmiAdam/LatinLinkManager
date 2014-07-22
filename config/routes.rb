@@ -13,7 +13,7 @@ LatinLinkManager::Application.routes.draw do
   match '/allmanagers', to: 'users#index', via: 'get'
   match '/alltranslators', to: 'translators#index', via: 'get'
   match '/newtranslator', to: 'translators#new', via: 'get'
-  match '/search/translator', to: 'searches#new', via: 'get'
+  match '/search/:table', to: 'searches#new', via: 'get'
   match '/orders/paid/:id', to: 'orders#paid', via: 'put'
   match '/orders/paid', to: 'orders#closed', via: 'get'
   match '/orders/unpaid', to: 'orders#open', via: 'get'
