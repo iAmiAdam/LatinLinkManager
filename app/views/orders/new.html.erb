@@ -1,0 +1,28 @@
+<% provide(:title, 'New Purchase Order') %>
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+<h1 class="center"> Create Purchase Order </h1>
+<div class="well">
+	<%= form_for(@order) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	<div class="form-group">
+		<%= f.label :LLID %>
+		<%= f.text_field :LLID, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :value %>
+		<%= f.text_field :value, class: "form-control"  %>
+	</div>
+	<div class="form-group">
+		<%= f.label :type %>
+		<%= f.radio_button :type, '0', :checked => true, class: "form-control" %> Translator
+		<%= f.radio_button :type, '1', class: "form-control" %> Client
+	</div>
+	<div class="form-group">
+		<%= f.label :paid %>
+		<%= f.radio_button :type, 'true', :checked => true, class: "form-control" %> Translator
+		<%= f.radio_button :type, 'false', class: "form-control" %> Client
+	</div>
+	<%= f.submit "Create New Order", class: "btn btn-large btn-primary form-control" %>
+	<% end %>
+</div>
+</div>
