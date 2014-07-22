@@ -14,7 +14,8 @@ LatinLinkManager::Application.routes.draw do
   match '/alltranslators', to: 'translators#index', via: 'get'
   match '/newtranslator', to: 'translators#new', via: 'get'
   match '/search/translator', to: 'searches#new', via: 'get'
-  
+  match 'orders/paid/:id', to: 'orders#paid', via: 'put'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

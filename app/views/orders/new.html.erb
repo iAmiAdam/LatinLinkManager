@@ -13,13 +13,12 @@
 		<%= f.text_field :value, class: "form-control"  %>
 	</div>
 	<div class="form-group">
-		<%= f.label :type %>
-		<%= f.radio_button :type, '0', :checked => true %> Translator
-		<%= f.radio_button :type, '1' %> Client
+		<%= f.label :category %>
+		<%= f.select :category, [['Translator', '0'], ['Client', '0']], class: "form-control" %> 
 	</div>
 	<div class="form-group">
 		<%= f.label :paid %>
-		<%= f.check_box :paid, {}, true, false %> 
+		<%= f.check_box :paid %> 
 	</div>
 	<%= f.submit "Create New Order", class: "btn btn-large btn-primary form-control" %>
 	<% end %>

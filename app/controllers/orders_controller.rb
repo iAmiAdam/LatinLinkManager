@@ -9,8 +9,21 @@ class OrdersController < ApplicationController
 		@order = Order.find(params[:id])
 	end
 
+	def open
+
+	end
+
+	def closed
+
+	end
+
 	def new
 		@order = Order.new
+		@biggest = Order.maximum(:id)
+		if @biggest == nil
+			@biggest = 1
+		end
+		@order.LLID = "LL-#{@biggest}"
 	end
 
 	def create
@@ -36,6 +49,12 @@ class OrdersController < ApplicationController
 		end
 	end
 
+	def paid
+		@order = Order.find(params[:id])
+		@order.toggle!(:paid)
+		redirect_to orders_path
+	end
+
 	def destroy
 		Order.find(params[:id]).destroy
 		flash[:success] = "Order Deleted."
@@ -45,7 +64,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:LLID, :value, :type, :paid)
+			params.require(:order).permit(:LLID, :value, :category, :paid)
 		end
 
 		def signed_in_user
