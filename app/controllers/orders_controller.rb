@@ -10,11 +10,11 @@ class OrdersController < ApplicationController
 	end
 
 	def open
-
+		@orders = Order.where(:paid => 'false').all
 	end
 
 	def closed
-
+		@orders = Order.where(:paid => 'true').all
 	end
 
 	def new
