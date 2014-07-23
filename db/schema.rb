@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140722074125) do
+ActiveRecord::Schema.define(version: 20140723083253) do
 
   create_table "clients", force: true do |t|
     t.string   "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20140722074125) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "rate"
+    t.string   "table"
   end
 
   create_table "translator_searches", force: true do |t|

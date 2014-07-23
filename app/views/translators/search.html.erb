@@ -11,6 +11,7 @@
 				<%= f.label :rate %>
 				<%= f.text_field :rate, class: "form-control" %>
 			</div>
+				<%= f.hidden_field :table, :value => "translators" %>
 				<%= f.submit "Search", class: "btn btn-large btn-primary form-control" %>
 		<% end %>
 	</div>
