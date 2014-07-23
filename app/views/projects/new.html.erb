@@ -10,6 +10,10 @@
 		<%= f.label :client %>
 		<%= f.collection_select :client, Client.all, :id, :name, class: "form-control"  %>
 	</div>
+	<div class="form-group">
+		<%= f.label :file %>
+		<%= f.file_field :file %>
+	</div>
 	
 	<%= f.submit "Create New Project", class: "btn btn-large btn-primary form-control" %>
 	<% end %>

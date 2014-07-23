@@ -17,7 +17,8 @@ class ProjectsController < ApplicationController
 		@client = Client.find(new_project_params[:client])
 		@project = @client.projects.build
 		if @project.save
-			@project.assets.build(new_project_params[:file])
+			@asset = @project.assets.build(new_asset_params)
+			@asset.save
 			flash[:success] = "Project Created"
 			redirect_to @project
 		else
@@ -38,5 +39,9 @@ class ProjectsController < ApplicationController
 
 		def new_project_params
 			params.require(:project).permit(:client, :file)
+		end
+
+		def new_asset_params
+			params.require(:project).permit(:file)
 		end
 end
