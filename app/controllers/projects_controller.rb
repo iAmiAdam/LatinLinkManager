@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
+		@translators = Translator.all
 	end
 
 	def create 
