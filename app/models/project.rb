@@ -7,5 +7,6 @@ class Project < ActiveRecord::Base
 	has_many :translators, through: :assignments
 
 	has_many :assets
+	accepts_nested_attributes_for :assets
 
 end
