@@ -4,7 +4,7 @@
 <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
 <h1 class="center"> Create Project </h1>
 <div class="well">
-	<%= form_for(@project) do |f| %>
+	<%= form_for @project, :html => {:multipart => true} do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="form-group">
 		<%= f.label :client %>

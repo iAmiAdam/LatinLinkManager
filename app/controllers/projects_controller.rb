@@ -18,9 +18,12 @@ class ProjectsController < ApplicationController
 		@project = @client.projects.build
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
-			@asset.save
-			flash[:success] = "Project Created"
-			redirect_to @project
+			if @asset.save
+				flash[:success] = "Project Created"
+				redirect_to @project
+			else 
+				render 'new'
+			end
 		else
 			render 'new'
 		end
