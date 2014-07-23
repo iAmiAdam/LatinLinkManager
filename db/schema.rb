@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723130238) do
+ActiveRecord::Schema.define(version: 20140723131900) do
 
   create_table "assets", force: true do |t|
     t.string   "file_file_name"
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.string   "pid"
+    t.string   "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20140723130238) do
     t.string   "count"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "client"
+    t.string   "client_id"
   end
 
   create_table "searches", force: true do |t|

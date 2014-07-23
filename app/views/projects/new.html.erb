@@ -7,8 +7,8 @@
 	<%= form_for(@project) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<div class="form-group">
-		<%= f.label :translators %>
-		<%= f.collection_select :translators, Translator.all, :id, :name, class: "form-control"  %>
+		<%= f.label :client %>
+		<%= f.collection_select :client, Client.all, :id, :name, class: "form-control"  %>
 	</div>
 	
 	<%= f.submit "Create New Project", class: "btn btn-large btn-primary form-control" %>

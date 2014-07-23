@@ -6,4 +6,6 @@ class Project < ActiveRecord::Base
 	# And they also belong to mutliple translators
 	has_many :translators, through: :assignments
 
+	has_many :assets
+
 end
