@@ -3,6 +3,7 @@ LatinLinkManager::Application.routes.draw do
   resources :translators
   resources :clients
   resources :projects
+  resources :assignments
   resources :orders, only: [:index, :new, :create, :paid, :closed, :open]
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]

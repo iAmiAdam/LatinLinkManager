@@ -4,6 +4,8 @@ class Translator < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: { case_sensitive: false}
 	validates :rate, presence: true
 
+	belongs_to :assignment
+
 	def search
 		self.find_translators
 	end

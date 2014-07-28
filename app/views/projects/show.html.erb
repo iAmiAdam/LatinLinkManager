@@ -2,10 +2,26 @@
 
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-4">
 	<div class="well">
-		Translators placeholder
+		<h2 class="center">Translators</h2>
+		<% @translators.each do |t| %>
+		<p><%= t.name %></p>
+		<% end %>
+		<h2 class="center">Add a translator</h2>
+		<%= form_for(@assignment) do |f| %>
+		<div class="form-group">
+			<%= f.label :translator %>
+			<%= f.collection_select :translator, Translator.all, :id, :name, class: "form-control" %>
+			<%= f.hidden_field :project, :value => @project.id %>
+		</div>
+		<%= f.submit "Add", class: "btn btn-large btn-primary form-control" %>
+		<% end %>
 	</div>
 	<div class="well">
-		Client placeholder
+		<h2 class="center">Client</h2>
+		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
+		<p><%= @project.count %></p>
+		<p>LL-<%= @project.count %>-1</p>
+
 	</div>
 </div>
 
@@ -14,6 +30,6 @@
 		Main Project breakdown
 	</div>
 	<div class="well">
-		Files
+		<h2 class="center">Files</h2>
 	</div>
 </div>

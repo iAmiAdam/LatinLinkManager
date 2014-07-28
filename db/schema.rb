@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140723131900) do
   end
 
   create_table "assignments", force: true do |t|
-    t.string   "tid"
-    t.string   "pid"
+    t.string   "translator_id"
+    t.string   "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

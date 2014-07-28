@@ -7,6 +7,12 @@ class ProjectsController < ApplicationController
 	def show 
 		@project = Project.find(params[:id])
 		@assets = @project.assets
+		@client = @project.client
+		@assignment = Assignment.new
+		@assignments = @project.assignments
+		@assignments.each do |ass|
+			@translators = @translators.to_a.push Translator.find(ass.translator_id)
+		end
 	end
 
 	def new
@@ -17,6 +23,7 @@ class ProjectsController < ApplicationController
 
 		@client = Client.find(new_project_params[:client])
 		@project = @client.projects.build
+		@project.count = @client.projects.count + 1
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
 			if @asset.save
