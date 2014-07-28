@@ -2,5 +2,7 @@ class Asset < ActiveRecord::Base
 	belongs_to :project
 	has_attached_file :file
 
-	validates_attachment_content_type :file, content_type: {content_type: "text/xml"}
+	
+	validates_attachment_file_name :file, :matches => [/xml\Z/]
+	do_not_validate_attachment_file_type :file
 end

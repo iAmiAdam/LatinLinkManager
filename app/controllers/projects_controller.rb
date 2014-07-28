@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
 		@client = Client.find(new_project_params[:client])
 		@project = @client.projects.build
 		if @project.save
-			@asset = @project.assets.build(params[:project][:file])
+			@asset = @project.assets.build(new_asset_params)
 			if @asset.save
 				flash[:success] = "Project Created"
 				redirect_to @project
