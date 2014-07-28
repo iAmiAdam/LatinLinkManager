@@ -27,7 +27,31 @@
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
 	<div class="well">
-		Main Project breakdown
+		<h2 class="center">Project breakdown</h2>
+
+		<% @assets.take(1).each do |a| %>
+		<% @breakdown = a %>
+		<% end %>
+
+		<% f = File.open(@breakdown.file.path) %>
+		<% doc = Nokogiri::XML(f) %>
+		<tbody>
+		<table class="table table-hover">
+		
+			<tr><td>Match Types</td><td>% of rate</td><td>Words</td><td>%</td><td>Value</td></tr>
+
+		<% variant = doc.xpath("//batchTotal//analyse") %>
+			<% i = 0 %>
+		<% variant.each do |section| %>
+			<% section.elements.each do |node| %>
+			<tr><td><%= node.name %></td><td>0%</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+			<% end %>
+		<% end %>
+		</table>
+		</tbody>
+
+
+
 	</div>
 	<div class="well">
 		<h2 class="center">Files</h2>
