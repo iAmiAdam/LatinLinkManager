@@ -48,6 +48,7 @@ class ProjectsController < ApplicationController
 
 	def destroy
 		Project.find(params[:id]).destroy
+		redirect_to projects_path
 	end
 
 	def update 
