@@ -2,7 +2,9 @@ LatinLinkManager::Application.routes.draw do
   resources :users
   resources :translators
   resources :clients
-  resources :projects
+  match '/projects/open', to: 'projects#open', via: 'get'
+  match '/projects/closed', to: 'projects#closed', via: 'get'
+  resources :projects, only: [:index, :show, :new, :create, :closed, :open]
   resources :assignments
   resources :assets
   resources :orders, only: [:index, :new, :create, :paid, :closed, :open]
