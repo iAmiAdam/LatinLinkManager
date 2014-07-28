@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 	def show 
 		@project = Project.find(params[:id])
 		@assets = @project.assets
+		@asset = Asset.new
 		@client = @project.client
 		@assignment = Assignment.new
 		@assignments = @project.assignments
@@ -17,6 +18,13 @@ class ProjectsController < ApplicationController
 
 	def new
 		@project = Project.new
+	end
+
+	def asset
+		@project = Project.find(params[:project])
+		@asset = @project.assets.build(new_asset_params)
+		@asset.save
+		redirect_to @project
 	end
 
 	def create 

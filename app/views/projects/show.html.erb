@@ -31,5 +31,19 @@
 	</div>
 	<div class="well">
 		<h2 class="center">Files</h2>
+		<% @assets.each do |a| %>
+		<%= link_to a.file_file_name, a.file.url %>
+		<% end %>
+
+		<h2 class="center">New File</h3>
+		<%= form_for @asset, :html => {:multipart => true} do |f| %>
+		<div class="form-group">
+			<%= f.label :file %>
+			<%= f.file_field :file, class: "form-control" %>
+			<%= f.hidden_field :project, :value => @project.id %>
+		</div>
+	
+		<%= f.submit "Add Asset", class: "btn btn-large btn-primary form-control" %>
+	<% end %>
 	</div>
 </div>
