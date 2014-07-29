@@ -9,7 +9,10 @@ class AssignmentsController < ApplicationController
 	end
 
 	def destroy
-
+		@assignment = Assignment.find(params[:id])
+		@project = Project.find(@assignment.project_id)
+		Assignment.find(params[:id]).destroy
+		redirect_to @project
 	end
 
 	private

@@ -3,9 +3,14 @@
 <div class="col-xs-12 col-sm-12 col-md-2 col-lg-4">
 	<div class="well">
 		<h2 class="center">Translators</h2>
-		<% @translators.each do |t| %>
-		<p><%= t.name %></p>
+
+		<% @assignments.each do |a| %>
+		<% @translator = Translator.find(a.translator_id) %>
+		<p><%= @translator.name %><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), "/assignments/"+a.id.to_s, data: { confirm: "Are you sure you want to delete this Assignment?" }, method: :delete %></p>
 		<% end %>
+
+
+
 		<h2 class="center">Add a translator</h2>
 		<%= form_for(@assignment) do |f| %>
 		<div class="form-group">
