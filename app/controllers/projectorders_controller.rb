@@ -1,2 +1,0 @@
-class ProjectordersController < ApplicationController
-end
