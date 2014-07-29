@@ -8,6 +8,7 @@ LatinLinkManager::Application.routes.draw do
   resources :projects, only: [:index, :show, :new, :create, :closed, :open]
   resources :assignments
   resources :assets
+  resources :notes
   resources :orders, only: [:index, :new, :create, :paid, :closed, :open]
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]

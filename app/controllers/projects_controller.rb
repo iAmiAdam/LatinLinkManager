@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
 			@translators = @translators.to_a.push Translator.find(ass.translator_id)
 		end
 		@notes = @project.notes
+		@note = Note.new
 	end
 
 	def new
@@ -35,6 +36,7 @@ class ProjectsController < ApplicationController
 		@project.source = new_project_params[:source]
 		@project.target = new_project_params[:target]
 		@project.count = @client.projects.count + 1
+		@project.cost = new_project_params[:value]
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
 			if @asset.save
@@ -78,7 +80,7 @@ class ProjectsController < ApplicationController
 		
 
 		def new_project_params
-			params.require(:project).permit(:client, :source, :target, assets_attributes: [:file])
+			params.require(:project).permit(:client, :source, :target, :value, assets_attributes: [:file])
 		end
 
 		def new_asset_params

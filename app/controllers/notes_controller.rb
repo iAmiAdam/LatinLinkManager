@@ -5,8 +5,9 @@ class NotesController < ApplicationController
 	end
 
 	def create
-		@project = Project.find(note_params[:project_id])
-		@note = @project.notes.build(note_params[:content])
+		@project = Project.find(note_params[:project])
+		@note = @project.notes.build
+		@note.content = note_params[:content]
 		@note.save
 		redirect_to @project
 	end
@@ -21,6 +22,6 @@ class NotesController < ApplicationController
 	private
 
 		def note_params
-			params.require(:note).permit(:project_id, :content)
+			params.require(:note).permit(:project, :content)
 		end
 end

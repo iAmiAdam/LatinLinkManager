@@ -40,6 +40,14 @@
 		<% @notes.each do |n| %>
 			<p><%= n.content %></p>
 		<% end %>
+		<%= form_for(@note) do |f| %>
+		<div class="form-group">
+			<%= f.label :note %>
+			<%= f.text_field :content, class: "form-control" %>
+			<%= f.hidden_field :project, :value => @project.id %>
+		</div>
+		<%= f.submit "Add Note", class: "btn btn-large btn-primary form-control" %>
+		<% end %>
 	</div>	
 </div>
 
