@@ -11,7 +11,11 @@ class NotesController < ApplicationController
 		redirect_to @project
 	end
 
-	def destroy 
+	def destroy
+		@note = Note.find(params[:id])
+		@project = Project.find(@note.project_id) 
+		@note.destroy
+		redirect_to @project
 	end
 
 	private
