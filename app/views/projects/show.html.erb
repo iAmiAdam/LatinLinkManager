@@ -35,6 +35,12 @@
 						Mark as closed <%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %>
 					<% end %></p>
 	</div>
+	<div class="well">
+		<h2 class="center">Notes</h2>
+		<% @notes.each do |n| %>
+			<p><%= n.content %></p>
+		<% end %>
+	</div>	
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">

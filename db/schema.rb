@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140728142027) do
+ActiveRecord::Schema.define(version: 20140729105544) do
 
   create_table "assets", force: true do |t|
     t.string   "file_file_name"
@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20140728142027) do
   create_table "clients", force: true do |t|
     t.string   "name"
     t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.string   "project_id"
+    t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
