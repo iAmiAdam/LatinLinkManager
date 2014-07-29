@@ -11,6 +11,12 @@
 		<%= f.collection_select :client, Client.all, :id, :name, class: "form-control"  %>
 	</div>
 	<div class="form-group">
+		<%= f.label :source %>
+		<%= f.text_field :source, class: "form-control" %>
+		<%= f.label :target %>
+		<%= f.text_field :target, class: "form-control" %>
+	</div>
+	<div class="form-group">
 		<%= f.label :file %>
 		<%= f.file_field :file, class: "form-control" %>
 	</div>

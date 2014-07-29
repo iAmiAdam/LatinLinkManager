@@ -31,6 +31,8 @@ class ProjectsController < ApplicationController
 
 		@client = Client.find(new_project_params[:client])
 		@project = @client.projects.build
+		@project.source = new_project_params[:source]
+		@project.target = new_project_params[:target]
 		@project.count = @client.projects.count + 1
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
@@ -69,7 +71,7 @@ class ProjectsController < ApplicationController
 		
 
 		def new_project_params
-			params.require(:project).permit(:client, assets_attributes: [:file])
+			params.require(:project).permit(:client, :source, :target, assets_attributes: [:file])
 		end
 
 		def new_asset_params
