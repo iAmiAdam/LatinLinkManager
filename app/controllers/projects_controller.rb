@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
 
 	end
 
-	def closed
+	def finished
 		@project = Project.find(params[:id])
 		@project.toggle!(:closed)
 		redirect_to @project
