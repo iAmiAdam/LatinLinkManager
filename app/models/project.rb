@@ -3,7 +3,7 @@ class Project < ActiveRecord::Base
 	belongs_to :client
 
 	has_many :assignments
-
+	has_many :notes
 	has_many :assets
 	accepts_nested_attributes_for :assets
 
