@@ -53,7 +53,7 @@ class ProjectsController < ApplicationController
 	def open
 		@projects = Project.where(:closed => false).all
 		render 'index'
-	end
+	end 
 
 	def closed
 		@projects = Project.where(:closed => true).all
@@ -76,8 +76,6 @@ class ProjectsController < ApplicationController
 	end
 
 	private
-
-		
 
 		def new_project_params
 			params.require(:project).permit(:client, :source, :target, :value, assets_attributes: [:file])
