@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729105544) do
+ActiveRecord::Schema.define(version: 20140729190319) do
 
   create_table "assets", force: true do |t|
     t.string   "file_file_name"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140729105544) do
     t.boolean  "paid",       default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "project_id"
   end
 
   create_table "projects", force: true do |t|

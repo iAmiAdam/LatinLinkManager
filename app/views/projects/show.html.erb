@@ -26,7 +26,7 @@
 	<div class="well">
 		<h2 class="center">Client</h2>
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
-		<p><%= @project.count %></p>
+		<p>#<%= @project.count %></p>
 		<p>LL-<%= @project.count %>-1</p>
 		<p><%= @project.source %> -> <%= @project.target %></p>
 		<p><% if @project.closed == true %>
