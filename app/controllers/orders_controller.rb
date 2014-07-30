@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
 
 	def show 
 		@order = Order.find(params[:id])
+		@clients = Client.all
+		@projects = []
 	end
 
 	def open
@@ -57,6 +59,15 @@ class OrdersController < ApplicationController
 		redirect_to orders_path
 	end
 
+	def update_projects
+		@projects = Project.where("client_id = ?", params[:client_id])
+
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	
 	def destroy
 		Order.find(params[:id]).destroy
 		flash[:success] = "Order Deleted."
@@ -66,7 +77,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:LLID, :value, :category, :paid)
+			params.require(:order).permit(:LLID, :value, :category, :client, :paid)
 		end
 
 		def signed_in_user

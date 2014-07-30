@@ -78,7 +78,7 @@ class ProjectsController < ApplicationController
 	private
 
 		def new_project_params
-			params.require(:project).permit(:client, :source, :target, :value, assets_attributes: [:file])
+			params.require(:project).permit(:client, :cost, :source, :target, :value, assets_attributes: [:file])
 		end
 
 		def new_asset_params
