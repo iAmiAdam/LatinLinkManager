@@ -8,7 +8,7 @@ class OrdersController < ApplicationController
 	def show 
 		@order = Order.find(params[:id])
 		@clients = Client.all
-		
+		@links = Link.where(:order_id => params[:id]).all
 		@link = Link.new
 	end
 
