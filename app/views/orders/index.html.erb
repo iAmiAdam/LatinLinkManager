@@ -5,7 +5,7 @@
 		<table class="table table-hover">
 			<tr><td>ID</td><td>Value</td><td>Type</td><td>Paid</td><td>Delete</td></tr>
 			<% @orders.each do |order| %>
-			<tr><td><%= order.LLID %></td>
+			<tr><td><%= link_to order.LLID,"orders/"+order.id.to_s %></td>
 				<td><%= order.value %></td>
 				<td><% if order.category == 0 %>
 						Client </td>
