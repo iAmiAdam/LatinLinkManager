@@ -3,4 +3,5 @@ class Client < ActiveRecord::Base
 	validates :contact, presence: true
 
 	has_many :projects, dependent: :destroy
+	has_many :links
 end
