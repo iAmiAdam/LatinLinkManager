@@ -11,6 +11,8 @@
 
 		</table>
 
+		<p>Cost: £<%= @cost %>
+
 		<h2 class="center">Add a translator</h2>
 		<%= form_for(@assignment) do |f| %>
 		<div class="form-group">
@@ -25,6 +27,7 @@
 	<div class="well">
 		<h2 class="center">Client</h2>
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
+		<p>£<%= @value %>
 		<p>#<%= @project.count %></p>
 		<p>LL-<%= @project.count %>-1</p>
 		<p><%= @project.source %> -> <%= @project.target %></p>

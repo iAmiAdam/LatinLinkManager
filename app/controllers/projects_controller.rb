@@ -16,10 +16,26 @@ class ProjectsController < ApplicationController
 		end
 		@notes = @project.notes
 		@note = Note.new
+
+
 		@links = @project.links
 		@links.each do |l|
 			@orders = @orders.to_a.push Order.find(l.order_id)
 		end
+
+		@value = 0
+		@cost = 0
+
+		if @orders
+			@orders.each do |o|
+				if o.category == 0
+					@value += o.value.to_f
+				else
+					@cost += o.value.to_f
+				end
+			end
+		end
+
 		@orderlink = Link.new
 	end
 
