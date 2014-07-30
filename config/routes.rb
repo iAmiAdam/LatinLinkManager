@@ -10,6 +10,7 @@ LatinLinkManager::Application.routes.draw do
   resources :assets
   resources :notes
   resources :orders
+  resources :links
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   root 'sessions#new'
@@ -25,7 +26,6 @@ LatinLinkManager::Application.routes.draw do
   match '/orders/paid', to: 'orders#closed', via: 'get'
   match '/orders/unpaid', to: 'orders#open', via: 'get'
   match '/orders/', to: 'order#projects_from_client', via: 'get'
-  get 'orders/update_projects', as: 'update_projects'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

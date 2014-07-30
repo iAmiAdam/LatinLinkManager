@@ -16,6 +16,11 @@ class ProjectsController < ApplicationController
 		end
 		@notes = @project.notes
 		@note = Note.new
+		@links = @project.links
+		@links.each do |l|
+			@orders = @orders.to_a.push Order.find(l.order_id)
+		end
+		@orderlink = Link.new
 	end
 
 	def new

@@ -11,8 +11,6 @@
 
 		</table>
 
-
-
 		<h2 class="center">Add a translator</h2>
 		<%= form_for(@assignment) do |f| %>
 		<div class="form-group">
@@ -23,6 +21,7 @@
 		<%= f.submit "Add", class: "btn btn-large btn-primary form-control" %>
 		<% end %>
 	</div>
+
 	<div class="well">
 		<h2 class="center">Client</h2>
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
@@ -35,6 +34,7 @@
 						Mark as closed <%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %>
 					<% end %></p>
 	</div>
+
 	<div class="well">
 		<h2 class="center">Notes</h2>
 		<% @notes.each do |n| %>
@@ -49,6 +49,22 @@
 		<%= f.submit "Add Note", class: "btn btn-large btn-primary form-control" %>
 		<% end %>
 	</div>	
+
+	<div class="well">
+		<h2 class="center">Purchase Orders</h2>
+		<% @links.each do |l| %>
+		<% @order = Order.find(l.order_id) %>
+			<p> <%= @order.LLID %> </p>
+		<% end %>
+		<%= form_for(@orderlink) do |f| %>
+		<div class="form-group">
+			<%= f.label :order %>
+			<%= f.collection_select :order_id, Order.all, :id, :LLID, class: "form-control" %>
+			<%= f.hidden_field :project_id, :value => @project.id %>
+		</div>
+		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
+		<% end %>
+	</div>
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
