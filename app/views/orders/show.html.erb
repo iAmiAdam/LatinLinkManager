@@ -10,10 +10,13 @@
 			<% if l.translator_id %>
 				<% @translator = Translator.find(l.translator_id) %>
 				<p>Linked to <%= link_to @translator.name, "/translators/"+@translator.id.to_s+"/edit" %></p>
-			<% else %>
+			<% elsif l.project_id %>
 				<% @project = Project.find(l.project_id) %>
 				<% @client = Client.find(@project.client_id) %>
-				<p>Linked to <%= link_to "#{@client.name} #{@project.count}", "/projects/"+@project.id.to_s %></p>
+				<p>Linked to <%= link_to "#{@client.name} ##{@project.count}", "/projects/"+@project.id.to_s %></p>
+			<% else %>
+				<% @client = Client.find(l.client_id) %>
+				<p>Linked to <%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
 			<% end %>
 		<% end %>
 	</div>

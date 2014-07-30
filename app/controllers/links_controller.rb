@@ -18,7 +18,7 @@ class LinksController < ApplicationController
 			@order = Order.find(new_link_params[:order_id])
 			redirect_to @order
 		else
-			@client = Client.find(new_link_params[:translator_id])
+			@client = Client.find(new_link_params[:client_id])
 			@link = @client.links.build
 			@link.order_id = new_link_params[:order_id]
 			@link.save

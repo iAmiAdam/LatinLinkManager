@@ -8,7 +8,10 @@ class ClientsController < ApplicationController
 	def show
 		@client = Client.find(params[:id])
 		@projects = @client.projects
-		@links = 
+		@links = @client.links
+		@links.each do |l|
+			@orders = @orders.to_a.push Order.find(l.order_id)
+		end
 	end
 
 	def new
