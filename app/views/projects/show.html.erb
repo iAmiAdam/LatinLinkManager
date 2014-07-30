@@ -38,6 +38,22 @@
 	</div>
 
 	<div class="well">
+		<h2 class="center">Purchase Orders</h2>
+		<% @links.each do |l| %>
+		<% @order = Order.find(l.order_id) %>
+			<p> <%= link_to @order.LLID, "/orders/"+@order.id.to_s %> </p>
+		<% end %>
+		<%= form_for(@orderlink) do |f| %>
+		<div class="form-group">
+			<%= f.label :order %>
+			<%= f.collection_select :order_id, Order.all, :id, :LLID, class: "form-control" %>
+			<%= f.hidden_field :project_id, :value => @project.id %>
+		</div>
+		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
+		<% end %>
+	</div>
+
+	<div class="well">
 		<h2 class="center">Notes</h2>
 		<% @notes.each do |n| %>
 			<p><%= n.content %></p>
@@ -51,22 +67,6 @@
 		<%= f.submit "Add Note", class: "btn btn-large btn-primary form-control" %>
 		<% end %>
 	</div>	
-
-	<div class="well">
-		<h2 class="center">Purchase Orders</h2>
-		<% @links.each do |l| %>
-		<% @order = Order.find(l.order_id) %>
-			<p> <%= @order.LLID %> </p>
-		<% end %>
-		<%= form_for(@orderlink) do |f| %>
-		<div class="form-group">
-			<%= f.label :order %>
-			<%= f.collection_select :order_id, Order.all, :id, :LLID, class: "form-control" %>
-			<%= f.hidden_field :project_id, :value => @project.id %>
-		</div>
-		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
-		<% end %>
-	</div>
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-10 col-lg-8">
