@@ -23,10 +23,7 @@ class OrdersController < ApplicationController
 
 	def new
 		@order = Order.new
-		@biggest = Order.maximum(:id)
-		if @biggest == nil
-			@biggest = 1
-		end
+		@biggest = Order.maximum(:id) + 1
 		@order.LLID = "LL-#{@biggest}"
 	end
 

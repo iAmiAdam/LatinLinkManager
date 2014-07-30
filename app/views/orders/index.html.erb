@@ -8,9 +8,9 @@
 			<tr><td><%= order.LLID %></td>
 				<td><%= order.value %></td>
 				<td><% if order.category == 0 %>
-						Translator </td>
-					<% else %>
 						Client </td>
+					<% else %>
+						Translator </td>
 					<% end %>
 				<td><% if order.paid == true %>
 						<%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), "orders/paid/"+order.id.to_s, :method => :put %></td>
