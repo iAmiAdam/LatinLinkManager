@@ -7,6 +7,8 @@ class ClientsController < ApplicationController
 
 	def show
 		@client = Client.find(params[:id])
+		@projects = @client.projects
+		@links = 
 	end
 
 	def new
