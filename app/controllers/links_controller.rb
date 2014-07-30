@@ -4,11 +4,20 @@ class LinksController < ApplicationController
 	end	
 
 	def create
-		@project = Project.find(new_link_params[:project_id])
-		@link = @project.links.build
-		@link.order_id = new_link_params[:order_id]
-		@link.save
-		redirect_to @project
+		if (new_link_params[:project_id])
+			@project = Project.find(new_link_params[:project_id])
+			@link = @project.links.build
+			@link.order_id = new_link_params[:order_id]
+			@link.save
+			redirect_to @project
+		else 
+			@translator = Translator.find(new_link_params[:translator_id])
+			@link = @translator.links.build
+			@link.order_id = new_link_params[:order_id]
+			@link.save
+			@order = Order.find(new_link_params[:order_id])
+			redirect_to @order
+		end
 	end
 
 	def destroy

@@ -8,4 +8,16 @@
 		<p><% if @order.category == 0 %> Received: <% else %> Paid: <% end %> <% if @order.paid == true %><i class="fa fa-check-square-o fa-2x"></i><% else %><i class="fa fa-square-o fa-2x"></i><% end %>
 	</div>
 
+	<div class="well">
+		<h2 class="center">Link to Translator</h2>
+		<%= form_for(@link) do |f| %>
+		<div class="form-group">
+			<%= f.label :translator %>
+			<%= f.collection_select :translator_id, Translator.all, :id, :name, class: "form-control" %>
+			<%= f.hidden_field :order_id, :value => @order.id %>
+		</div>
+		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
+		<% end %>
+	</div>
+
 </div>

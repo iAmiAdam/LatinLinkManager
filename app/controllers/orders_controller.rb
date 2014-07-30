@@ -8,7 +8,8 @@ class OrdersController < ApplicationController
 	def show 
 		@order = Order.find(params[:id])
 		@clients = Client.all
-		@projects = []
+		
+		@link = Link.new
 	end
 
 	def open

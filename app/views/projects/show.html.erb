@@ -27,9 +27,8 @@
 	<div class="well">
 		<h2 class="center">Client</h2>
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
-		<p>£<%= @value %>
-		<p>#<%= @project.count %></p>
-		<p>LL-<%= @project.count %>-1</p>
+		<p>Value: £<%= @value %>
+		<p>Project #<%= @project.count %></p>
 		<p><%= @project.source %> -> <%= @project.target %></p>
 		<p><% if @project.closed == true %>
 						Mark as open <%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %>
