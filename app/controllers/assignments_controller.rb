@@ -4,6 +4,7 @@ class AssignmentsController < ApplicationController
 		@project = Project.find(params[:assignment][:project])
 		@assignment = @project.assignments.build
 		@assignment.translator_id = params[:assignment][:translator]
+		@assignment.rate = params[:assignment][:rate]
 		@assignment.save
 		redirect_to @project
 	end
@@ -18,6 +19,6 @@ class AssignmentsController < ApplicationController
 	private
 
 		def assignment_params
-			params.require(:assignment).permit(:project, :translator)
+			params.require(:assignment).permit(:project, :translator, :rate)
 		end
 end
