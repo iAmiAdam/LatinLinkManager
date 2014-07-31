@@ -93,7 +93,36 @@
 		<% variant.each do |section| %>
 			<% section.elements.each do |node| %>
 			<% @words = @words + node.attr("words").to_i %>
-			<tr><td><%= node.name %></td><td>0%</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+
+				<% case node.name %>
+				<% when "perfect" %>
+					<tr><td>Perfect</td><td>0</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "inContextExact" %>
+					<tr><td>Context Match</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "exact" %>
+					<tr><td>100%</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "crossFileRepeated" %>
+					<tr><td>Context Match</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "repeated" %>
+					<tr><td>Repeated</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "total" %>
+					<tr><td>Total</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "new" %>
+					<tr><td>New</td><td>100</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% when "fuzzy" %>
+					<% case node.attr("min") %>
+					<% when "50" %>
+						<tr><td>50-74%</td><td>100</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+					<% when "75" %>
+						<tr><td>75-84%</td><td>50</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+					<% when "85" %>
+						<tr><td>85-94%</td><td>25</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+					<% when "95" %>
+						<tr><td>95-99%</td><td>10</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+					<% end %>
+				<% else %>
+					<tr><td><%= node.name %></td><td>0%</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
+				<% end %>
 			<% end %>
 		<% end %>
 		</table>
