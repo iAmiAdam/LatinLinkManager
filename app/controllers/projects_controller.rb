@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
 		end
 		@notes = @project.notes
 		@note = Note.new
-
+		@neworder = Order.new
 
 		@links = @project.links
 		@links.each do |l|

@@ -89,17 +89,29 @@
 			<tr><td>Match Types</td><td>% of rate</td><td>Words</td><td>%</td><td>Value</td></tr>
 
 		<% variant = doc.xpath("//batchTotal//analyse") %>
-			<% i = 0 %>
+			<% @words = 4 %>
 		<% variant.each do |section| %>
 			<% section.elements.each do |node| %>
+			<% @words = @words + node.attr("words").to_i %>
 			<tr><td><%= node.name %></td><td>0%</td><td><%= node.attr("words") %> </td><td>10</td><td>0.26</td></tr>
 			<% end %>
 		<% end %>
 		</table>
 		</tbody>
 
-		
 
+		<% @assignments.each do |a| %>
+			<% @price = @words * a.rate 
+			 @translators.each do |t| 
+				 if t.id = a.translator_id %>
+					<%= form_for(@neworder) do |f| %>
+						<%= t.name %>
+						<%= f.text_field :value, :value => @price.round(2) %>
+						<%= f.submit %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
 
 
 	</div>
