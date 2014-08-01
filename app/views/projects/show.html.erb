@@ -82,25 +82,25 @@
 		
 			<tr><td>Match Types</td><td>% of rate</td><td>Words</td><td>%</td></tr>
 				
-			<tr><td>Perfect</td><td>0</td><td><%= @words.translated %> </td><td>10</td></tr>
+			<tr><td>Perfect</td><td>0</td><td><%= @words.translated %> </td><td><%= number_to_percentage(@words.translated.to_f / @words.total * 100, precision: 2) %></td></tr>
 			
-			<tr><td>Context Match</td><td>10</td><td><%= @words.context %> </td><td>10</td></tr>
+			<tr><td>Context Match</td><td>10</td><td><%= @words.context %> </td><td><%= number_to_percentage(@words.context.to_f / @words.total * 100, precision: 2) %></td></tr>
 				
-			<tr><td>Repeated</td><td>10</td><td><%= @words.repetition %> </td><td>10</td></tr>
+			<tr><td>Repeated</td><td>10</td><td><%= @words.repetition %> </td><td><%= number_to_percentage(@words.repetition.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td>50-74%</td><td>100</td><td><%= @words.fifty %> </td><td>10</td></tr>
+			<tr><td>50-74%</td><td>100</td><td><%= @words.fifty %> </td><td><%= number_to_percentage(@words.fifty.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td>75-84%</td><td>50</td><td><%= @words.seventy_five %> </td><td>10</td></tr>
+			<tr><td>75-84%</td><td>50</td><td><%= @words.seventy_five %> </td><td><%= number_to_percentage(@words.seventy_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td>85-94%</td><td>25</td><td><%= @words.eighty_five %> </td><td>10</td></tr>
+			<tr><td>85-94%</td><td>25</td><td><%= @words.eighty_five %> </td><td><%= number_to_percentage(@words.eighty_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td>95-99%</td><td>10</td><td><%= @words.ninety_five %> </td><td>10</td></tr>
+			<tr><td>95-99%</td><td>10</td><td><%= @words.ninety_five %> </td><td><%= number_to_percentage(@words.ninety_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td>100%</td><td>10</td><td><%= @words.hundred %> </td><td>10</td></tr>
+			<tr><td>100%</td><td>10</td><td><%= @words.hundred %> </td><td><%= number_to_percentage(@words.hundred.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td>New</td><td>100</td><td><%= @words.nomatch %> </td><td>10</td></tr>
+			<tr><td>New</td><td>100</td><td><%= @words.nomatch %> </td><td><%= number_to_percentage(@words.nomatch.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td>Total</td><td>10</td><td><%= @words.total %> </td><td>10</td></tr>
+			<tr><td>Total</td><td></td><td><%= @words.total %> </td><td></td></tr>
 					
 		</table>
 		</tbody>
