@@ -6,11 +6,11 @@ class CreateBreakdowns < ActiveRecord::Migration
       t.integer :context
       t.integer :repetition
       t.integer :format
-      t.integer :100
-      t.integer :95
-      t.integer :85
-      t.integer :75
-      t.integer :50
+      t.integer :hundred
+      t.integer :ninety_five
+      t.integer :eighty_five
+      t.integer :seventy_five
+      t.integer :fifty
       t.integer :new
       t.integer :total
 

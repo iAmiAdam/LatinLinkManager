@@ -6,5 +6,6 @@ class Project < ActiveRecord::Base
 	has_many :notes
 	has_many :assets
 	has_many :links
+	has_one :breakdown, dependent: :destroy
 	accepts_nested_attributes_for :assets
 end
