@@ -11,6 +11,7 @@ LatinLinkManager::Application.routes.draw do
   resources :notes
   resources :orders
   resources :links
+  resources :breakdowns
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   root 'sessions#new'

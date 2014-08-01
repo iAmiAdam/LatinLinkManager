@@ -61,6 +61,51 @@ class ProjectsController < ApplicationController
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
 			if @asset.save
+				@breakdown = @project.breakdowns.build
+
+				f = File.open(@asset.file.path)
+				doc = Nokogiri::XML(f)
+
+				variant = doc.xpath("//batchTotal//analyse") 
+
+				@words = 4 
+				variant.each do |section| 
+					section.elements.each do |node| 
+
+							case node.name 
+							when "perfect" 
+								@breakdown.translated = node.attr("words")
+							when "inContextExact" 
+								@breakdown.context = node.attr("words")
+							when "exact" 
+								@breakdown.hundred = node.attr("words")
+							when "crossFileRepeated"
+								@breakdown.format = node.attr("words")
+							when "repeated"
+								@breakdown.repetition = node.attr("words")
+							when "total" 
+								@breakdown.total = node.attr("words")
+							when "new" 
+								@breakdown.nomatch = node.attr("words")
+							when "fuzzy" 
+								case node.attr("min") 
+								when "50" 
+									@breakdown.fifty = node.attr("words")
+								when "75" 
+									@breakdown.seventy_five = node.attr("words")
+								when "85" 
+									@breakdown.eighty_five = node.attr("words")
+								when "95" 
+									@breakdown.ninety_five = node.attr("words")
+								end 
+							else 
+								
+							end 
+					end
+				end
+
+				@breakdown.save
+
 				flash[:success] = "Project Created"
 				redirect_to @project
 			else 

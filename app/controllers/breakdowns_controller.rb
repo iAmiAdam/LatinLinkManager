@@ -1,11 +1,14 @@
 class BreakdownsController < ApplicationController
 	def new
+		@breakdown = Breakdown.new
 	end
 
 	def create 
+
 	end
 
 	def destroy
+		
 	end
 
 	private

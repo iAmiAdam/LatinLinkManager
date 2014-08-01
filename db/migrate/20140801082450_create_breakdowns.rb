@@ -11,7 +11,7 @@ class CreateBreakdowns < ActiveRecord::Migration
       t.integer :eighty_five
       t.integer :seventy_five
       t.integer :fifty
-      t.integer :new
+      t.integer :nomatch
       t.integer :total
 
       t.timestamps

@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140801082450) do
     t.integer  "eighty_five"
     t.integer  "seventy_five"
     t.integer  "fifty"
-    t.integer  "new"
+    t.integer  "nomatch"
     t.integer  "total"
     t.datetime "created_at"
     t.datetime "updated_at"
