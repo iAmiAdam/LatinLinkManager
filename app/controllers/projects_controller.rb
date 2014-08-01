@@ -25,7 +25,9 @@ class ProjectsController < ApplicationController
 
 		@breakdowns = @project.breakdowns
 		@breakdowns.each do |b|
-			@words = b
+			if b.type == 0
+				@words = b
+			end
 		end
 
 		@value = 0
