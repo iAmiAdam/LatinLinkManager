@@ -108,12 +108,22 @@
 
 
 		<% @assignments.each do |a| %>
-			<% @price = @words * a.rate 
-			 @translators.each do |t| 
+			<% @quote = 0 %>
+			<% @words.attributes.each do |attr_name, attr_value| %>
+				<% if attr_name != "id" && attr_name != "project_id" && attr_name != "total" && attr_name != "created_at" && attr_name != "updated_at" && attr_name != "type" %>
+					<% if attr_value != 0 %>
+						<% @quote += (a.rate.to_f / 100 * @percents.read_attribute(attr_name).to_f) * attr_value.to_f %>
+					<% end %>
+				<% end %>			
+
+			<% end %>
+			
+
+			 <% @translators.each do |t| 
 				 if t.id = a.translator_id %>
 					<%= form_for(@neworder) do |f| %>
 						<%= t.name %>
-						<%= f.text_field :value, :value => @price.round(2) %>
+						<%= f.text_field :value, :value => @quote.round(2) %>
 						<%= f.submit %>
 					<% end %>
 				<% end %>
