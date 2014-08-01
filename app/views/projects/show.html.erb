@@ -79,29 +79,30 @@
 
 		<tbody>
 		<table class="table table-hover">
+			<%= form_for(@breakdown) do |f| %>
 		
 			<tr><td><b>Match Types</b></td><td><b>% of rate</b></td><td><b>Words</b></td><td><b>%</b></td></tr>
 				
-			<tr><td><b>Perfect</b></td><td>0</td><td><%= @words.translated %> </td><td><%= number_to_percentage(@words.translated.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>Perfect</b></td><td><%= f.text_field :translated, value: @percents.translated %></td><td><%= @words.translated %> </td><td><%= number_to_percentage(@words.translated.to_f / @words.total * 100, precision: 2) %></td></tr>
 			
-			<tr><td><b>Context Match</b></td><td>10</td><td><%= @words.context %> </td><td><%= number_to_percentage(@words.context.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>Context Match</b></td><td><%= f.text_field :context, value: @percents.context %></td><td><%= @words.context %> </td><td><%= number_to_percentage(@words.context.to_f / @words.total * 100, precision: 2) %></td></tr>
 				
-			<tr><td><b>Repeated</b></td><td>10</td><td><%= @words.repetition %> </td><td><%= number_to_percentage(@words.repetition.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>Repeated</b></td><td><%= f.text_field :repetition, value: @percents.repetition %></td><td><%= @words.repetition %> </td><td><%= number_to_percentage(@words.repetition.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td><b>50-74%</b></td><td>100</td><td><%= @words.fifty %> </td><td><%= number_to_percentage(@words.fifty.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>50-74%</b></td><td><%= f.text_field :fifty, value: @percents.fifty %></td><td><%= @words.fifty %> </td><td><%= number_to_percentage(@words.fifty.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td><b>75-84%</b></td><td>50</td><td><%= @words.seventy_five %> </td><td><%= number_to_percentage(@words.seventy_five.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>75-84%</b></td><td><%= f.text_field :seventy_five, value: @percents.seventy_five %></td><td><%= @words.seventy_five %> </td><td><%= number_to_percentage(@words.seventy_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td><b>85-94%</b></td><td>25</td><td><%= @words.eighty_five %> </td><td><%= number_to_percentage(@words.eighty_five.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>85-94%</b></td><td><%= f.text_field :eighty_five, value: @percents.eighty_five %></td><td><%= @words.eighty_five %> </td><td><%= number_to_percentage(@words.eighty_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 					
-			<tr><td><b>95-99%</b></td><td>10</td><td><%= @words.ninety_five %> </td><td><%= number_to_percentage(@words.ninety_five.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>95-99%</b></td><td><%= f.text_field :ninety_five, value: @percents.ninety_five %></td><td><%= @words.ninety_five %> </td><td><%= number_to_percentage(@words.ninety_five.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td><b>100%</b></td><td>10</td><td><%= @words.hundred %> </td><td><%= number_to_percentage(@words.hundred.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>100%</b></td><td><%= f.text_field :hundred, value: @percents.hundred %></td><td><%= @words.hundred %> </td><td><%= number_to_percentage(@words.hundred.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td><b>New</b></td><td>100</td><td><%= @words.nomatch %> </td><td><%= number_to_percentage(@words.nomatch.to_f / @words.total * 100, precision: 2) %></td></tr>
+			<tr><td><b>New</b></td><td><%= f.text_field :nomatch, value: @percents.nomatch %></td><td><%= @words.nomatch %> </td><td><%= number_to_percentage(@words.nomatch.to_f / @words.total * 100, precision: 2) %></td></tr>
 
-			<tr><td><b>Total</b></td><td></td><td><%= @words.total %> </td><td></td></tr>
-					
+			<tr><td><b>Total</b></td><td><%= f.submit "Change rates" %></td><td><%= @words.total %> </td><td></td></tr>
+			<% end %>		
 		</table>
 		</tbody>
 
