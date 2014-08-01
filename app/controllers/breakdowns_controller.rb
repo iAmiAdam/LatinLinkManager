@@ -1,0 +1,2 @@
+class BreakdownsController < ApplicationController
+end
