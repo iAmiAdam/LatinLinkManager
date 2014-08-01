@@ -23,6 +23,11 @@ class ProjectsController < ApplicationController
 			@orders = @orders.to_a.push Order.find(l.order_id)
 		end
 
+		@breakdowns = @project.breakdowns
+		@breakdowns.each do |b|
+			@words = b
+		end
+
 		@value = 0
 		@cost = 0
 
