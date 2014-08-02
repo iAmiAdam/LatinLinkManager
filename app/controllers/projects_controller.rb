@@ -70,6 +70,7 @@ class ProjectsController < ApplicationController
 		@project.source = new_project_params[:source]
 		@project.target = new_project_params[:target]
 		@project.count = @client.projects.count + 1
+		@project.deadline = new_project_params[:deadline]
 		@project.cost = new_project_params[:value]
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
@@ -157,7 +158,7 @@ class ProjectsController < ApplicationController
 	private
 
 		def new_project_params
-			params.require(:project).permit(:client, :cost, :source, :target, :value, assets_attributes: [:file])
+			params.require(:project).permit(:client, :cost, :source, :target, :value, :deadline, assets_attributes: [:file])
 		end
 
 		def new_asset_params
