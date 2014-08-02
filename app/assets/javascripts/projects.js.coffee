@@ -3,6 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).ready(function(){
+`$(document).ready(function(){
   $('[data-behaviour~=datepicker]').datepicker();
-})
+})`
