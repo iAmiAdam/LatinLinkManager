@@ -29,12 +29,23 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		@order = Order.new(order_params)
-		if @order.save
-			flash[:success] = "Order created."
-			redirect_to orders_path
+		if link_params[:translator_id]
+			@order = Order.new(order_params)
+			@project = Project.find(link_params[:project_id])
+			@order.save
+			@link = @project.links.build
+			@link.translator_id = link_params[:translator_id]
+			@link.order_id = @order.id
+			@link.save
+			redirect_to @project
 		else
-			render 'new'
+			@order = Order.new(order_params)
+			if @order.save
+				flash[:success] = "Order created."
+				redirect_to orders_path
+			else
+				render 'new'
+			end
 		end
 	end
 
@@ -76,6 +87,10 @@ class OrdersController < ApplicationController
 
 		def order_params
 			params.require(:order).permit(:LLID, :value, :category, :client, :paid)
+		end
+
+		def link_params
+			params.require(:order).permit(:translator_id, :project_id)
 		end
 
 		def signed_in_user
