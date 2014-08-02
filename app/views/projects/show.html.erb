@@ -120,7 +120,7 @@
 			
 
 			 <% @translators.each do |t| 
-				 if t.id = a.translator_id %>
+				 if t.id.to_i == a.translator_id.to_i %>
 					<%= form_for(@neworder) do |f| %>
 						<%= t.name %>
 						<%= f.text_field :value, :value => @quote.round(2) %>

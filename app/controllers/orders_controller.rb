@@ -29,12 +29,17 @@ class OrdersController < ApplicationController
 	end
 
 	def create
-		if link_params[:translator_id]
-			@order = Order.new(order_params)
-			@project = Project.find(link_params[:project_id])
+		if order_params[:translator_id]
+			@order = Order.new
+			@biggest = Order.maximum(:id) + 1
+			@order.LLID = "LL-#{@biggest}"
+			@order.value = order_params[:value]
+			@order.category = 1
+			@order.paid = false
 			@order.save
+			@project = Project.find(order_params[:project_id])
 			@link = @project.links.build
-			@link.translator_id = link_params[:translator_id]
+			@link.translator_id = order_params[:translator_id]
 			@link.order_id = @order.id
 			@link.save
 			redirect_to @project
@@ -86,11 +91,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:LLID, :value, :category, :client, :paid)
-		end
-
-		def link_params
-			params.require(:order).permit(:translator_id, :project_id)
+			params.require(:order).permit!
 		end
 
 		def signed_in_user
