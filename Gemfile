@@ -10,6 +10,7 @@ gem 'will_paginate', '3.0.4'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'paperclip', '4.1'
 gem 'nokogiri', '~> 1.6.3.1'
+gem 'bootstrap-datepicker-rails'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
