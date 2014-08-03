@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	before_action :signed_in_user
 
 	def index
 		@projects = Project.all 
@@ -164,4 +165,8 @@ class ProjectsController < ApplicationController
 		def new_asset_params
 			params.require(:project).permit(:file)
 		end
+
+		def signed_in_user
+  			redirect_to root_url, notice: "Please Sign in." unless signed_in?
+  		end
 end
