@@ -125,13 +125,13 @@
 				 if t.id.to_i == a.translator_id.to_i %>
 					<%= form_for(@neworder) do |f| %>
 						<%= t.name %>
-						<%= f.text_field :value, :value => @quote.round(2) %>
+						<%= f.text_field :value, :value => @quote.round(2), class: "form-control" %>
 						<%= f.hidden_field :LLID, :value => @neworder.LLID %>
 						<%= f.hidden_field :category, :value => 1 %>
 						<%= f.hidden_field :translator_id, :value => t.id %>
 						<%= f.hidden_field :paid, :value => false %>
 						<%= f.hidden_field :project_id, :value => @project.id %>
-						<%= f.submit %>
+						<%= f.submit "Create Order", class: "btn btn-large btn-primary form-control" %>
 					<% end %>
 					<br />
 				<% end %>
