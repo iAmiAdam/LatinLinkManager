@@ -1,5 +1,5 @@
 class ProjectMailer < ActionMailer::Base
-  default from: current_user.email
+  default from: "info@latinlink.com"
 
   def project_email(translator, project)
   	@translator = translator
