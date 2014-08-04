@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
 
 		@breakdowns = @project.breakdowns
 		@breakdowns.each do |b|
-			if b.sort == 0
+			if b.sort == 1
 				@words = b
 			else
 				@percents = b
