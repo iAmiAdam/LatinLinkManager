@@ -118,8 +118,21 @@ class ProjectsController < ApplicationController
 							end 
 					end
 				end
-
+				@breakdown.sort = 1
 				@breakdown.save
+
+				@percents = @project.breakdowns.build
+				@percents.translated = 0
+				@percents.context = 10
+				@percents.repetition = 10
+				@percents.hundred = 10
+				@percents.ninety_five = 25
+				@percents.eighty_five = 50
+				@percents.seventy_five = 50
+				@percents.fifty = 100
+				@percents.nomatch = 100
+				@percents.sort = 0
+				@percents.save
 
 				flash[:success] = "Project Created"
 				redirect_to @project

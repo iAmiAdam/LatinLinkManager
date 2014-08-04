@@ -3,6 +3,6 @@ class Asset < ActiveRecord::Base
 	has_attached_file :file
 
 	
-	validates_attachment_file_name :file, :matches => %w[/xml\Z/ /zip\Z/]
+	validates_attachment_file_name :file, :matches => [/xml\Z/, /zip\Z/]
 	do_not_validate_attachment_file_type :file
 end
