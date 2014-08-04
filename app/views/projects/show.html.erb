@@ -36,9 +36,9 @@
 		<p>Project #<%= @project.count %></p>
 		<p><%= @project.source %> -> <%= @project.target %></p>
 		<p><% if @project.closed == true %>
-						Mark as open <%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %>
+						<%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %> Mark as open 
 					<% else %>
-						Mark as closed <%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %>
+						<%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), "closed/"+@project.id.to_s, :method => :put %> Mark as closed 
 					<% end %></p>
 	</div>
 
