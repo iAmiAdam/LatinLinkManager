@@ -28,7 +28,10 @@ class LinksController < ApplicationController
 	end
 
 	def destroy
-
+		@link = Link.find(params[:id])
+		@project = Project.find(@link.project_id)
+		Link.find(params[:id]).destroy
+		redirect_to @project
 	end
 
 	private
