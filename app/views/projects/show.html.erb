@@ -5,7 +5,7 @@
 		<h2 class="center">Translators</h2>
 		<% @assignments.each do |a| %>
 			<% @translator = Translator.find(a.translator_id) %>
-			<p class="translator"><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), "/assignments/"+a.id.to_s, data: { confirm: "Are you sure you want to delete this Assignment?" }, method: :delete %><%= @translator.name %></p>
+			<p class="delete"><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), "/assignments/"+a.id.to_s, data: { confirm: "Are you sure you want to delete this Assignment?" }, method: :delete %><%= @translator.name %></p>
 		<% end %>
 
 	
@@ -46,12 +46,12 @@
 		<h2 class="center">Purchase Orders</h2>
 		<% @links.each do |l| %>
 		<% @order = Order.find(l.order_id) %>
-			<p> <%= link_to @order.LLID, "/orders/"+@order.id.to_s %> </p>
+			<p class="delete"><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), "/orders/"+l.id.to_s, data: { confirm: "Are you sure you want to delete this Link?" }, method: :delete %><%= link_to @order.LLID, "/orders/"+@order.id.to_s %> </p>
 		<% end %>
 		<%= form_for(@orderlink) do |f| %>
 		<div class="form-group">
 			<%= f.label :order %>
-			<%= f.collection_select :order_id, Order.all, :id, :LLID, class: "form-control" %>
+			<%= f.collection_select :order_id, Order.all, :id, :LLID, {}, {:class => "form-control"} %>
 			<%= f.hidden_field :project_id, :value => @project.id %>
 		</div>
 		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
