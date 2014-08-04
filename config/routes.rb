@@ -14,7 +14,7 @@ LatinLinkManager::Application.routes.draw do
   resources :breakdowns
   resources :searches, only: [:new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
-  root 'static_pages#home'
+  root to: 'static_pages#home'
   match '/signin', to: 'sessions#new', via: 'get'
   match '/signout', to: 'sessions#destroy', via: 'delete'
   match '/newuser', to: 'users#new', via: 'get'
