@@ -12,5 +12,5 @@
 `$(document).ready(function() {
 	$('#project_time').datetimepicker({
 		pickDate: false
-	})
+	});
 })`
