@@ -9,8 +9,8 @@
   });
 })`
 
-`$(document).ready(function(){
-  $('[data-behaviour~=timepicker]').timeepicker();
+`$(document).ready(function() {
+	$('#project_time').datetimepicker({
+		pickDate: false
+	})
 })`
-
-

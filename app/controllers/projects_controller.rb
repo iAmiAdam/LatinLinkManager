@@ -72,6 +72,7 @@ class ProjectsController < ApplicationController
 		@project.target = new_project_params[:target]
 		@project.count = @client.projects.count + 1
 		@project.deadline = new_project_params[:deadline]
+		@project.time = new_project_params[:time]
 		@project.cost = new_project_params[:value]
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
