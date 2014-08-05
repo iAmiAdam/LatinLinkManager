@@ -75,7 +75,8 @@ class ProjectsController < ApplicationController
 		@project.cost = new_project_params[:value]
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
-			if @asset.save
+			if new_asset_params[:file]
+				@asset.save
 				@breakdown = @project.breakdowns.build
 
 				f = File.open(@asset.file.path)
@@ -83,41 +84,53 @@ class ProjectsController < ApplicationController
 
 				variant = doc.xpath("//batchTotal//analyse") 
 
-				@words = 4 
 				variant.each do |section| 
 					section.elements.each do |node| 
-
-							case node.name 
-							when "perfect" 
-								@breakdown.translated = node.attr("words")
-							when "inContextExact" 
-								@breakdown.context = node.attr("words")
-							when "exact" 
-								@breakdown.hundred = node.attr("words")
-							when "crossFileRepeated"
-								@breakdown.format = node.attr("words")
-							when "repeated"
-								@breakdown.repetition = node.attr("words")
-							when "total" 
-								@breakdown.total = node.attr("words")
-							when "new" 
-								@breakdown.nomatch = node.attr("words")
-							when "fuzzy" 
-								case node.attr("min") 
-								when "50" 
-									@breakdown.fifty = node.attr("words")
-								when "75" 
-									@breakdown.seventy_five = node.attr("words")
-								when "85" 
-									@breakdown.eighty_five = node.attr("words")
-								when "95" 
-									@breakdown.ninety_five = node.attr("words")
-								end 
-							else 
-								
-							end 
+						case node.name 
+						when "perfect" 
+							@breakdown.translated = node.attr("words")
+						when "inContextExact" 
+							@breakdown.context = node.attr("words")
+						when "exact" 
+							@breakdown.hundred = node.attr("words")
+						when "crossFileRepeated"
+							@breakdown.format = node.attr("words")
+						when "repeated"
+							@breakdown.repetition = node.attr("words")
+						when "total" 
+							@breakdown.total = node.attr("words")
+						when "new" 
+							@breakdown.nomatch = node.attr("words")
+						when "fuzzy" 
+							case node.attr("min") 
+							when "50" 
+								@breakdown.fifty = node.attr("words")
+							when "75" 
+								@breakdown.seventy_five = node.attr("words")
+							when "85" 
+								@breakdown.eighty_five = node.attr("words")
+							when "95" 
+								@breakdown.ninety_five = node.attr("words")
+							end 									
+						end 
 					end
 				end
+				@breakdown.sort = 1
+				@breakdown.save
+			else 
+				@breakdown = @project.breakdowns.build
+				@breakdown.translated = 0
+				@breakdown.context = 0
+				@breakdown.hundred = 0
+				@breakdown.format = 0
+				@breakdown.repetition = 0
+				@breakdown.total = 0
+				@breakdown.nomatch = 0
+				@breakdown.fifty = 0
+				@breakdown.seventy_five = 0
+				@breakdown.eighty_five = 0
+				@breakdown.ninety_five = 0
+				@breakdown.total = 0
 				@breakdown.sort = 1
 				@breakdown.save
 
@@ -136,9 +149,7 @@ class ProjectsController < ApplicationController
 
 				flash[:success] = "Project Created"
 				redirect_to @project
-			else 
-				render 'new'
-			end
+			end	
 		else
 			render 'new'
 		end
