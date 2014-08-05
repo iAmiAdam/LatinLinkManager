@@ -8,3 +8,9 @@
   	format: "yyyy/mm/dd"
   });
 })`
+
+`$(document).ready(function(){
+  $('[data-behaviour~=timepicker]').timeepicker();
+})`
+
+
