@@ -43,6 +43,19 @@ class OrdersController < ApplicationController
 			@link.order_id = @order.id
 			@link.save
 			redirect_to @project
+		elsif order_params[:client_id]
+			@order = Order.new
+			@order.LLID = order_params[:LLID]
+			@order.value = order_params[:value]
+			@order.category = 0
+			@order.paid = false
+			@order.save
+			@project = Project.find(order_params[:project_id])
+			@link = @project.links.build
+			@link.client_id = order_params[:client_id]
+			@link.order_id = @order.id
+			@link.save
+			redirect_to @project
 		else
 			@order = Order.new(order_params)
 			if @order.save
