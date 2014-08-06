@@ -60,8 +60,29 @@ class ProjectsController < ApplicationController
 	def send_email
 		@translator = Translator.find(params[:translator_id])
 		@project = Project.find(params[:project_id])
-		ProjectMailer.project_email(@translator, @project).deliver
-		
+
+		@assignments = @project.assignments
+
+		@rate = 0
+
+		@assignments.each do |a|
+			if a.translator_id == params[:translator_id]
+				@rate = a.rate
+			end
+		end
+
+		@links = Link.where(:project_id => params[:project_id])
+
+		@links.each do |l|
+			if l.translator_id == params[:translator_id]
+				@order = Order.find(l.order_id)
+			end
+		end
+
+		@total = @order.value
+
+		ProjectMailer.project_email(@translator, @project, @rate, @total).deliver
+
 	end	
 
 	def asset

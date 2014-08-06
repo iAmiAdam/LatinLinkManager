@@ -1,7 +1,7 @@
 class ProjectMailer < ActionMailer::Base
   default from: "iamiadam@gmail.com"
 
-  def project_email(translator, project)
+  def project_email(translator, project, rate, total)
   	@translator = translator
   	@project = project
 
@@ -16,11 +16,10 @@ class ProjectMailer < ActionMailer::Base
 			@percents = b
 		end
 	end
-	@assignment = Assignment.where(:translator_id => @translator.id, :project_id => @project.id)
-	@rate = @assignment.rate
-	@link = Link.where(:translator_id => @translator.id, :project_id => @project.id)
-	@order = Order.find(@link.order_id)
-	@total = @order.value
+	
+	@rate = rate.to_f
+
+	@total = total.to_f
 
 
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
