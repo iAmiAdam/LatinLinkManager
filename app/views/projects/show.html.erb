@@ -148,10 +148,10 @@
 						<%= f.hidden_field :project_id, :value => @project.id %>
 						<%= f.submit "Create Order", class: "btn btn-large btn-primary form-control" %>
 					<% end %>
-					<%= form_tag('/projects/emailtranslator') %>
+					<%= form_tag('/projects/email') %>
 					<%= hidden_field_tag :translator_id, t.id %>
 					<%= hidden_field_tag :project_id, @project.id %>
-					<%= submit_tag %>
+					<%= submit_tag "Email #{t.name}", class: "btn btn-large btn-primary form-control" %>
 					<br />
 				<% end %>
 			<% end %>

@@ -83,6 +83,8 @@ class ProjectsController < ApplicationController
 
 		ProjectMailer.project_email(@translator, @project, @rate, @total).deliver
 
+		redirect_to @project
+
 	end	
 
 	def asset
