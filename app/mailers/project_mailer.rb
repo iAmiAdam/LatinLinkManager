@@ -17,6 +17,6 @@ class ProjectMailer < ActionMailer::Base
 		end
 	end
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
-  	mail(to: email_with_name, subject: "Handoff #{}, request, deadline")
+  	mail(to: email_with_name, subject: "Handoff number | request | #{@project.deadline} #{project.time.strftime("%l:%M")}")
   end
 end
