@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
 		@translator = Translator.find(params[:translator_id])
 		@project = Project.find(params[:project_id])
 		ProjectMailer.project_email(@translator, @project).deliver
-		redirect_to @project
+		
 	end	
 
 	def asset
