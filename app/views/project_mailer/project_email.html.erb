@@ -8,11 +8,19 @@
 		Message here
 
 
-		Deadline
+		Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %>
+
+		<table>
+			<tr><td><b>Source Language</b></td><td><%= @project.source %></td></tr>
+			<tr><td><b>Target Language</b></td><td><%= @project.target %></td></tr>
+			<tr><td><b>Total Word Count</b></td><td><%= @words.total %></td></tr>
+			<tr><td><b>New Words</b></td><td><%= @words.nomatch %></td></tr>
+		</table>
 
 		Project info, source/target, total words, new words, special instructions.
 
 		Kit info
+
 		<table>
 			<tr><td><b>Match Types</b></td><td><b>% of rate</b></td><td><b>Words</b></td><td><b>%</b></td></tr>
 				
