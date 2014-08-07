@@ -25,6 +25,12 @@ class ProjectMailer < ActionMailer::Base
 
 	@message = message
 
+	@project.assets.each do |a|
+		if a.file_content_type == "application/octet-stream"
+			attachments["Kit.zip"] = File.read(a.file.path, mode: 'rb')
+		end
+	end
+
 	attachments.inline["logo"] = File.read("#{Rails.root.to_s + '/app/assets/images/emaillogo.png'}", mode: "rb")
 
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
