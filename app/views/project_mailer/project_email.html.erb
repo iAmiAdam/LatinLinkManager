@@ -8,19 +8,20 @@
 
 		<%= image_tag attachments["logo"].url %>
 
-		<p style="font-family: 'Calibri';"><%= @message %></p>
+		<p style="font-family: 'Calibri';"><%= simple_format(@message) %></p>
 
 
 		<p style="font-family: 'Calibri'; color: #f5821f; font-weight: bold;">Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %></p>
 
-		<table style="font-family: 'Calibri'; border: 1px solid #0094d0;">
+		<table border="1" cellpadding="5" style="font-family: 'Calibri'; border-collapse:collapse; border: 2px solid #0094d0; margin: 5px;">
 			<tr><td><b>Source Language</b></td><td><%= @project.source %></td></tr>
 			<tr><td><b>Target Language</b></td><td><%= @project.target %></td></tr>
 			<tr><td><b>Total Word Count</b></td><td><%= @words.total %></td></tr>
 			<tr><td><b>New Words</b></td><td><%= @words.nomatch %></td></tr>
 		</table>
 		<br />
-		<table style="font-family: 'Calibri'; border: 1px solid #0094d0; padding: 5px">
+		<table border="1" cellpadding="5" style="font-family: 'Calibri'; border-collapse:collapse; border: 2px solid #0094d0; margin: 5px;" >
+			<tbody>
 			<tr><td><b>Match Types</b></td><td><b>% of rate</b></td><td><b>Words</b></td><td><b>%</b></td><td><b>Value</b></td></tr>
 				
 			<tr><td><b>Perfect</b></td><td><%= @percents.translated %></td><td><%= @words.translated%> </td><td><%= number_to_percentage(@words.translated.to_f / @words.total * 100, precision: 2) %></td><td>£<%= (((@rate.to_f / 100) * @percents.translated.to_f) * @words.translated.to_f).round(2) %></td></tr>
@@ -42,7 +43,7 @@
 			<tr><td><b>New</b></td><td><%= @percents.nomatch %></td><td><%= @words.nomatch %> </td><td><%= number_to_percentage(@words.nomatch.to_f / @words.total * 100, precision: 2) %></td><td>£<%= (((@rate.to_f / 100) * @percents.nomatch.to_f) * @words.nomatch.to_f).round(2) %></td></tr>
 
 			<tr><td><b>Total</b></td><td></td><td><%= @words.total %> </td><td></td><td>£<%= @total %></tr>
-			
+			</tbody>
 		</table>
 
 		<p style="font-family: 'Calibri';"><%= @signature %></p>
