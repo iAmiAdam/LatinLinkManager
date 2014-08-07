@@ -5,7 +5,7 @@ class AssetsController < ApplicationController
 	end
 
 	def create 
-		@project = Project.find(params[:asset][:project])
+		@project = Project.find(params[:asset][:project_id])
 		@asset = @project.assets.build(new_asset_params)
 		@asset.save
 		redirect_to @project
@@ -18,6 +18,6 @@ class AssetsController < ApplicationController
 	private
 
 		def new_asset_params
-			params.require(:asset).permit(:file)
+			params.require(:asset).permit(:file, :project_id)
 		end
 end

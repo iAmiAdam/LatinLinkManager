@@ -171,7 +171,7 @@
 			<div class="form-group">
 				<%= f.label :file %>
 				<%= f.file_field :file, class: "form-control" %>
-				<%= f.hidden_field :project, :value => @project.id %>
+				<%= f.hidden_field :project_id, :value => @project.id %>
 			</div>
 	
 			<%= f.submit "Add Asset", class: "btn btn-large btn-primary form-control" %>
