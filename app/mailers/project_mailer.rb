@@ -33,8 +33,9 @@ class ProjectMailer < ActionMailer::Base
 	end
 
 	attachments.inline["logo"] = File.read("#{Rails.root.to_s + '/app/assets/images/emaillogo.png'}", mode: "rb")
-
+	
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
   	mail(from: from, to: email_with_name, subject: "Handoff #{handoff} | #{request} | #{@project.deadline} #{project.time.strftime("%l:%M")} GMT")
+
   end
 end
