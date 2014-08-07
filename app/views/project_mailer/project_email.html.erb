@@ -5,21 +5,22 @@
 	</head>
 
 	<body>
-		Message here
+
+		<%= image_tag attachments["logo"].url %>
+
+		<p style="font-family: 'Calibri';"><%= @message %></p>
 
 
-		Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %>
+		<p style="font-family: 'Calibri';">Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %></p>
 
-		<table>
+		<table style="font-family: 'Calibri'; border: 1px solid #000;">
 			<tr><td><b>Source Language</b></td><td><%= @project.source %></td></tr>
 			<tr><td><b>Target Language</b></td><td><%= @project.target %></td></tr>
 			<tr><td><b>Total Word Count</b></td><td><%= @words.total %></td></tr>
 			<tr><td><b>New Words</b></td><td><%= @words.nomatch %></td></tr>
 		</table>
-
-		Kit info
-
-		<table>
+		<br />
+		<table style="font-family: 'Calibri'; border: 1px solid #000; padding: 5px">
 			<tr><td><b>Match Types</b></td><td><b>% of rate</b></td><td><b>Words</b></td><td><b>%</b></td><td><b>Value</b></td></tr>
 				
 			<tr><td><b>Perfect</b></td><td><%= @percents.translated %></td><td><%= @words.translated%> </td><td><%= number_to_percentage(@words.translated.to_f / @words.total * 100, precision: 2) %></td><td>£<%= (((@rate.to_f / 100) * @percents.translated.to_f) * @words.translated.to_f).round(2) %></td></tr>
@@ -44,6 +45,6 @@
 			
 		</table>
 
-		<%= @signature %>
+		<p style="font-family: 'Calibri';"><%= @signature %></p>
 	</body>
 </html>

@@ -4,7 +4,14 @@
 	<div class="well">
 		<h2 class="center">Send Email</h2>
 		<%= form_tag('/projects/emailtranslator') %>
-
-		<%= submit_tag "Send Email" %>
+		<%= label_tag :handoff, "Handoff" %>
+		<%= text_field_tag :handoff, nil, class: "form-control" %>
+		<%= label_tag :request, "Request" %>
+		<%= text_field_tag :request, nil, class: "form-control" %>
+		<%= label_tag :message, "Message" %>
+		<%= text_area_tag :message, nil, class: "form-control" %>
+		<%= hidden_field_tag :translator_id, params[:translator_id] %>
+		<%= hidden_field_tag :project_id, params[:project_id] %>
+		<%= submit_tag "Send Email", class: "btn btn-large btn-primary form-control" %>
 	</div>
 </div>

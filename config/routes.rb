@@ -5,7 +5,8 @@ LatinLinkManager::Application.routes.draw do
   match '/projects/closed/:id', to: 'projects#finished', via: 'put'
   match '/projects/open', to: 'projects#open', via: 'get'
   match '/projects/closed', to: 'projects#closed', via: 'get'
-  match '/projects/emailtranslator', to: 'projects#send_email', via: 'POST'
+  match '/projects/emailtranslator', to: 'projects#send_email', via: 'post'
+  match '/projects/email', to: 'projects#email', via: 'post'
   resources :projects, only: [:index, :show, :new, :create, :destroy, :closed, :open, :send_email]
   resources :assignments
   resources :assets

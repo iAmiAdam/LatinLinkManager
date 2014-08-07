@@ -1,7 +1,7 @@
 class ProjectMailer < ActionMailer::Base
   default from: "iamiadam@gmail.com"
 
-  def project_email(translator, project, rate, total)
+  def project_email(translator, project, rate, total, handoff, request, message, signature)
   	@translator = translator
   	@project = project
 
@@ -21,9 +21,13 @@ class ProjectMailer < ActionMailer::Base
 
 	@total = total.to_f
 
-	@signature = current_user.signature
-	
+	@signature = signature
+
+	@message = message
+
+	attachments.inline["logo"] = File.read("#{Rails.root.to_s + '/app/assets/images/emaillogo.png'}", mode: "rb")
+
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
-  	mail(to: email_with_name, subject: "Handoff number | request | #{@project.deadline} #{project.time.strftime("%l:%M")}")
+  	mail(to: email_with_name, subject: "Handoff #{handoff} | #{request} | #{@project.deadline} #{project.time.strftime("%l:%M")}")
   end
 end

@@ -81,11 +81,18 @@ class ProjectsController < ApplicationController
 
 		@total = @order.value
 
-		ProjectMailer.project_email(@translator, @project, @rate, @total).deliver
 
+
+		ProjectMailer.project_email(@translator, @project, @rate, @total, params[:handoff], params[:request], params[:message], current_user.signature).deliver
+
+		flash[:success] = "Email sent"
 		redirect_to @project
 
 	end	
+
+	def email
+
+	end
 
 	def asset
 		@project = Project.find(params[:project])
