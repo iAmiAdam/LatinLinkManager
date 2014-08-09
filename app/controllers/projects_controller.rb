@@ -118,7 +118,7 @@ class ProjectsController < ApplicationController
 				@asset.save
 				@breakdown = @project.breakdowns.build
 
-				f = File.open("http://llmanager.s3.amazonaws.com"+@asset.file.path)
+				f = File.open("http://llmanager.s3.amazonaws.com"+@asset.file.path).read
 				doc = Nokogiri::XML(f)
 
 				variant = doc.xpath("//batchTotal//analyse") 
