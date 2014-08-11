@@ -212,10 +212,10 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	#def open
-		#@projects = Project.where(:closed => false).all
-		#render 'index'
-	#end 
+	def not_closed
+		@projects = Project.where(:closed => false).all
+		render 'index'
+	end 
 
 	def closed
 		@projects = Project.where(:closed => true).all
