@@ -118,7 +118,7 @@ class ProjectsController < ApplicationController
 				@asset.save
 				@breakdown = @project.breakdowns.build
 
-				f = File.open(@asset.file.url)
+				f = File.open(@asset.file.url, "r")
 				doc = Nokogiri::XML(f)
 
 				variant = doc.xpath("//batchTotal//analyse") 

@@ -78,6 +78,8 @@ LatinLinkManager::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
+  require 'open-uri'
+
   config.action_mailer.smtp_settings = {
     address: "smtp.hosts.co.uk",
     port: 587,

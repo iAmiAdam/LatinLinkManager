@@ -16,6 +16,7 @@ gem 'momentjs-rails', '>= 2.5.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
 gem 'figaro'
 gem 'aws-sdk'
+gem 'json'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
