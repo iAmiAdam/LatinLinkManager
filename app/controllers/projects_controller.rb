@@ -118,8 +118,10 @@ class ProjectsController < ApplicationController
 				@asset.save
 				@breakdown = @project.breakdowns.build
 
-				f = File.open(@asset.file.url, "r")
-				doc = Nokogiri::XML(f)
+				require('open-uri')
+				url_data = open(@asset.file.url).read()
+
+				doc = Nokogiri::XML(url_data)
 
 				variant = doc.xpath("//batchTotal//analyse") 
 
@@ -210,10 +212,10 @@ class ProjectsController < ApplicationController
 		end
 	end
 
-	def open
-		@projects = Project.where(:closed => false).all
-		render 'index'
-	end 
+	#def open
+		#@projects = Project.where(:closed => false).all
+		#render 'index'
+	#end 
 
 	def closed
 		@projects = Project.where(:closed => true).all
