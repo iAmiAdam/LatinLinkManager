@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
 		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false).order("deadline DESC")
 		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true).order("updated_at DESC")
 
-		if @projects
+		if !@projects.nil?
 			@projects.each do |p|
 				@links = p.links
 				@links.each do |l|
