@@ -10,6 +10,6 @@
 			<% end %>
 		</table>
 		</tbody>
-		<%= will_paginate %>
+		<div class="pages"><%= will_paginate @projects, renderer: BootstrapPagination::Rails %></div>
 	</div>
 </div>

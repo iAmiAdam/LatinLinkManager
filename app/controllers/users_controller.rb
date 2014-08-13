@@ -2,7 +2,7 @@
 	before_action :signed_in_user, only: [:index, :edit, :update]
 
   def index
-  	@users = User.all
+  	@users = User.paginate(:per_page => 10, page: params[:page])
   end
 
   def show

@@ -2,7 +2,7 @@ class ClientsController < ApplicationController
 	before_action :signed_in_user
 
 	def index 
-		@clients = Client.all
+		@clients = Client.paginate(:per_page => 10, page: params[:page])
 	end
 
 	def show

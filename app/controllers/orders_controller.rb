@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 	before_action :signed_in_user
 
 	def index
-		@orders ||= Order.all
+		@orders ||= Order.paginate(:per_page => 10, page: params[:page])
 	end
 
 	def show 
