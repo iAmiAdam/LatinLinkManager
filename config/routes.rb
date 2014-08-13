@@ -3,11 +3,11 @@ LatinLinkManager::Application.routes.draw do
   resources :translators
   resources :clients
   match '/projects/closed/:id', to: 'projects#finished', via: 'put'
-  match '/projects/open', to: 'projects#open', via: 'get'
+  match '/projects/open', to: 'projects#not_closed', via: 'get'
   match '/projects/closed', to: 'projects#closed', via: 'get'
   match '/projects/emailtranslator', to: 'projects#send_email', via: 'post'
   match '/projects/email', to: 'projects#email', via: 'post'
-  resources :projects, only: [:index, :show, :new, :create, :destroy, :closed, :open, :send_email]
+  resources :projects, only: [:index, :show, :new, :create, :destroy, :closed, :not_closed, :send_email]
   resources :assignments
   resources :assets
   resources :notes

@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
 	# Projects belong to clients 
 	belongs_to :client
-
+	default_scope -> { order('created_at DESC') }
 	has_many :assignments, dependent: :destroy
 	has_many :notes, dependent: :destroy
 	has_many :assets, dependent: :destroy
