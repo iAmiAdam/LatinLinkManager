@@ -6,6 +6,23 @@ class StaticPagesController < ApplicationController
 		@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month)
 		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false)
 		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true)
+
+		@projects.each do |p|
+			@links = p.links
+			@links.each do |l|
+				@orders = @orders.to_a.push Order.find(l.order_id)
+			end
+		end
+
+		@revenue = 0
+		@cost = 0
+		@orders.each do |o|
+			if o.category == 0
+				@revenue += o.value.to_f
+			else 
+				@cost += o.value.to_f
+			end
+		end
 	end
 
 	private

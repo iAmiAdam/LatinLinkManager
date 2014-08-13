@@ -4,7 +4,10 @@
 	<div class="well">
 		<p>Total Projects This Month:<%= @projects.size %></p>
 		<p>Total Deadlines This Month:<%= @deadlines.size %></p>
-		<p>Open Projects: </p>
-		<p>Closed Projects: </p>
+		<p>Open Projects: <%= @open.size %></p>
+		<p>Closed Projects: <%= @closed.size %></p>
+		<p>Revenue: £<%= @revenue.round(2) %></p>
+		<p>Expenditure: £<%= @cost.round(2) %> </p>
+		<p>Profit: £<%= (@revenue - @cost).round(2) %></p>
 	</div>
 </div>
