@@ -2,93 +2,97 @@
 
 <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
 	<div class="well">
-		<div id="accordion" class="panel-group">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="accordion" href="#collapseOne">Total Projects This Month: <%= @projects.size %></a>
-					</h4>
+		<% if @projects != nil %>
+			<div id="accordion" class="panel-group">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="accordion" href="#collapseOne">Total Projects This Month: <%= @projects.size %></a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse">
+						<div class="panel-body">
+							<table class="table">
+								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
+								<% @projects.each do |p| %>
+								<% @client = Client.find(p.client_id) %>
+								<tr><td><%= @client.name %></td><td><%= link_to p.count.to_s, "projects/"+p.id.to_s %></td><td><%= p.deadline %> <%= p.time.strftime("%l:%M") unless p.time == nil %></td></tr>
+								<% end %>
+							</table>
+						</div>
+					</div>
 				</div>
-				<div id="collapseOne" class="panel-collapse collapse">
-					<div class="panel-body">
-						<table class="table">
-							<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
-							<% @projects.each do |p| %>
-							<% @client = Client.find(p.client_id) %>
-							<tr><td><%= @client.name %></td><td><%= link_to p.count.to_s, "projects/"+p.id.to_s %></td><td><%= p.deadline %> <%= p.time.strftime("%l:%M") unless p.time == nil %></td></tr>
-							<% end %>
-						</table>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="accordion" href="#collapseTwo">Total Deadlines This Month: <%= @deadlines.size %></a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+						<div class="panel-body">
+							<table class="table">
+								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
+								<% @deadlines.each do |d| %>
+								<% @client = Client.find(d.client_id) %>
+								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td></tr>
+								<% end %>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="accordion" href="#collapseThree">Open Projects: <%= @open.size %></a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse">
+						<div class="panel-body">
+							<table class="table">
+								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
+								<% @open.each do |o| %>
+								<% @client = Client.find(o.client_id) %>
+								<tr><td><%= @client.name %></td><td><%= link_to o.count.to_s, "projects/"+o.id.to_s %></td><td><%= o.deadline %> <%= o.time.strftime("%l:%M") unless o.time == nil %></td></tr>
+								<% end %>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="accordion" href="#collapseFour">Closed Projects: <%= @closed.size %></a>
+						</h4>
+					</div>
+					<div id="collapseFour" class="panel-collapse collapse">
+						<div class="panel-body">
+							<table class="table">
+								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
+								<% @closed.each do |c| %>
+								<% @client = Client.find(c.client_id) %>
+								<tr><td><%= @client.name %></td><td><%= link_to c.count.to_s, "projects/"+c.id.to_s %></td><td><%= c.deadline %> <%= c.time.strftime("%l:%M") unless c.time == nil %></td></tr>
+								<% end %>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="accordion" href="#collapseFive">Finance</a>
+						</h4>
+					</div>
+					<div id="collapseFive" class="panel-collapse collapse">
+						<div class="panel-body">
+							<p>Revenue: £<%= @revenue.round(2) %></p>
+							<p>Expenditure: £<%= @cost.round(2) %> </p>
+							<p>Profit: £<%= (@revenue - @cost).round(2) %></p>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="accordion" href="#collapseTwo">Total Deadlines This Month: <%= @deadlines.size %></a>
-					</h4>
-				</div>
-				<div id="collapseTwo" class="panel-collapse collapse">
-					<div class="panel-body">
-						<table class="table">
-							<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
-							<% @deadlines.each do |d| %>
-							<% @client = Client.find(d.client_id) %>
-							<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td></tr>
-							<% end %>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="accordion" href="#collapseThree">Open Projects: <%= @open.size %></a>
-					</h4>
-				</div>
-				<div id="collapseThree" class="panel-collapse collapse">
-					<div class="panel-body">
-						<table class="table">
-							<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
-							<% @open.each do |o| %>
-							<% @client = Client.find(o.client_id) %>
-							<tr><td><%= @client.name %></td><td><%= link_to o.count.to_s, "projects/"+o.id.to_s %></td><td><%= o.deadline %> <%= o.time.strftime("%l:%M") unless o.time == nil %></td></tr>
-							<% end %>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="accordion" href="#collapseFour">Closed Projects: <%= @closed.size %></a>
-					</h4>
-				</div>
-				<div id="collapseFour" class="panel-collapse collapse">
-					<div class="panel-body">
-						<table class="table">
-							<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
-							<% @closed.each do |c| %>
-							<% @client = Client.find(c.client_id) %>
-							<tr><td><%= @client.name %></td><td><%= link_to c.count.to_s, "projects/"+c.id.to_s %></td><td><%= c.deadline %> <%= c.time.strftime("%l:%M") unless c.time == nil %></td></tr>
-							<% end %>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="accordion" href="#collapseFive">Finance</a>
-					</h4>
-				</div>
-				<div id="collapseFive" class="panel-collapse collapse">
-					<div class="panel-body">
-						<p>Revenue: £<%= @revenue.round(2) %></p>
-						<p>Expenditure: £<%= @cost.round(2) %> </p>
-						<p>Profit: £<%= (@revenue - @cost).round(2) %></p>
-					</div>
-				</div>
-			</div>
-		</div>
+		<% else %>
+			<p>There's no projects yet!</p>
+		<% end %>
 	</div>
 </div>
