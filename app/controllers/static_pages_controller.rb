@@ -2,10 +2,10 @@ class StaticPagesController < ApplicationController
 	before_action :signed_in_user
 
 	def home
-		@projects = Project.where(:created_at => Time.now.beginning_of_month..Time.now.end_of_month)
-		@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month)
-		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false)
-		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true)
+		@projects = Project.where(:created_at => Time.now.beginning_of_month..Time.now.end_of_month).order("updated_at DESC")
+		@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month).order("deadline DESC")
+		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false).order("deadline DESC")
+		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true).order("updated_at DESC")
 
 		@projects.each do |p|
 			@links = p.links
