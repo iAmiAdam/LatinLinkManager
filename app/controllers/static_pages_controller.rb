@@ -17,11 +17,13 @@ class StaticPagesController < ApplicationController
 
 			@revenue = 0
 			@cost = 0
-			@orders.each do |o|
-				if o.category == 0
-					@revenue += o.value.to_f
-				else 
-					@cost += o.value.to_f
+			if @orders != nil
+				@orders.each do |o|
+					if o.category == 0
+						@revenue += o.value.to_f
+					else 
+						@cost += o.value.to_f
+					end
 				end
 			end
 		end
