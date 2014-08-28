@@ -85,6 +85,7 @@ class ProjectsController < ApplicationController
 		@manager = current_user
 
 		ProjectMailer.project_email(@translator, @project, @rate, @total, params[:handoff], params[:request], params[:message], @manager).deliver
+		ProjectMailer.project_email(@manager, @project, @rate, @total, params[:handoff], params[:request], params[:message], @manager).deliver
 
 		flash[:success] = "Email sent"
 		redirect_to @project
