@@ -21,28 +21,4 @@
 		<% end %>
 	</div>
 
-	<div class="well">
-		<h2 class="center">Link to Translator</h2>
-		<%= form_for(@link) do |f| %>
-		<div class="form-group">
-			<%= f.label :translator %>
-			<%= f.collection_select :translator_id, Translator.all, :id, :name, class: "form-control" %>
-			<%= f.hidden_field :order_id, :value => @order.id %>
-		</div>
-		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
-		<% end %>
-	</div>
-
-	<div class="well">
-		<h2 class="center">Link to Client</h2>
-		<%= form_for(@link) do |f| %>
-		<div class="form-group">
-			<%= f.label :client %>
-			<%= f.collection_select :client_id, Client.all, :id, :name, class: "form-control" %>
-			<%= f.hidden_field :order_id, :value => @order.id %>
-		</div>
-		<%= f.submit "Link Order", class: "btn btn-large btn-primary form-control" %>
-		<% end %>
-	</div>
-
 </div>
