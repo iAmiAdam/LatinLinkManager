@@ -17,7 +17,7 @@ class TranslatorsController < ApplicationController
 		@translator = Translator.new(translator_params)
 	  	if @translator.save
 	  		flash[:success] = "Translator created."
-	  		redirect_to alltranslators_path
+	  		redirect_to translators_path
 	  	else
 	  		render 'new'
 	  	end
@@ -30,7 +30,7 @@ class TranslatorsController < ApplicationController
 	def update
 		@translator = Translator.find(params[:id])
 	  	if @translator.update_attributes(translator_params)
-	  		redirect_to alltranslator_path
+	  		redirect_to translators_path
 	  	else
 	  		render 'edit'
 	  	end
