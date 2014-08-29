@@ -1,6 +1,6 @@
 class ProjectMailer < ActionMailer::Base
 
-  def project_email(translator, project, rate, total, handoff, request, message, manager)
+  def project_email(translator, project, rate, total, handoff, request, message, manager, order)
   	@translator = translator
   	@project = project
 
@@ -35,7 +35,7 @@ class ProjectMailer < ActionMailer::Base
 	attachments.inline["logo"] = File.read("#{Rails.root.to_s + '/app/assets/images/emaillogo.png'}", mode: "rb")
 	
   	email_with_name = "#{@translator.name} <#{@translator.email}>"
-  	mail(from: from, to: email_with_name, subject: "Handoff #{handoff} | #{request} | #{@project.deadline} #{project.time.strftime("%l:%M")} GMT")
+  	mail(from: from, to: email_with_name, subject: "Handoff #{handoff} | #{request} | #{@project.deadline} #{project.time.strftime("%l:%M")} GMT | Purchase Order: #{order}")
 
   end
 end
