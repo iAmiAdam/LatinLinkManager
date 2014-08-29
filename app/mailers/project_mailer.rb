@@ -28,7 +28,7 @@ class ProjectMailer < ActionMailer::Base
 
 	@project.assets.each do |a|
 		if a.file_content_type == "application/octet-stream"
-			attachments["Kit.zip"] = open(a.file.url).read()
+			attachments[a.file_file_name] = open(a.file.url).read()
 		end
 	end
 
