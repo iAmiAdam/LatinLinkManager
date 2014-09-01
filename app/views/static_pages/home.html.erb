@@ -31,10 +31,15 @@
 					<div id="collapseTwo" class="panel-collapse collapse">
 						<div class="panel-body">
 							<table class="table">
-								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
+								<tr><td>Client</td><td>Number</td><td>Deadline</td><td>Translators</td></tr>
 								<% @deadlines.each do |d| %>
 								<% @client = Client.find(d.client_id) %>
-								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td></tr>
+								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td><td><table>
+									<% @projects.translaters.each do |t| %>
+										<tr><td><%= t.name %></td></tr>
+									<% end %>
+								</td>
+								</tr>
 								<% end %>
 							</table>
 						</div>
