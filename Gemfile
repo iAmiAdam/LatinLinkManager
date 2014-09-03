@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'aws-sdk'
 gem 'json'
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
