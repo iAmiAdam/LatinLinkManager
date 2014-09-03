@@ -17,7 +17,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 3.0.0.2'
 gem 'figaro'
 gem 'aws-sdk'
 gem 'json'
-gem 'wicked-pdf'
+gem 'wicked_pdf'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
