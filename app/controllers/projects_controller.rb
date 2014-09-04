@@ -109,7 +109,7 @@ class ProjectsController < ApplicationController
 		@project = @client.projects.build
 		@project.source = new_project_params[:source]
 		@project.target = new_project_params[:target]
-		@project.count = @client.name + (@client.projects.count + 1)
+		@project.count = @client.name +  " " + (@client.projects.count + 1).to_s
 		@project.deadline = new_project_params[:deadline]
 		@project.time = new_project_params[:time]
 		@project.cost = new_project_params[:value]
