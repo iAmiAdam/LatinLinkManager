@@ -28,6 +28,16 @@ class OrdersController < ApplicationController
 		@order.LLID = "LL-#{@biggest}"
 	end
 
+	def clients
+		@orders ||= Project.where(:category => 0).paginate(:per_page => 10, page: params[:page]).order('id DESC')
+		render 'index'
+	end
+
+	def translators
+		@orders ||= Project.where(:category => 1).paginate(:per_page => 10, page: params[:page]).order('id DESC')
+		render 'index'
+	end
+
 	def create
 		if order_params[:translator_id]
 			@order = Order.new
