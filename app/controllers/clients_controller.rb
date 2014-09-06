@@ -28,6 +28,18 @@ class ClientsController < ApplicationController
 		end
 	end
 
+	def invoice
+
+		@client = Client.find(params[:id])
+		@projects = @client.projects.where(:created_at => params[:month].beginning_of_month..params[:month].end_of_month)
+
+		format.pdf do
+      		render pdf: @order.payer_name,               
+	            layout: 'layouts/invoice.html.erb',  
+	            show_as_html: params[:debug].present?    
+    	end
+	end
+
 	def edit
 		@client = Client.find(params[:id])
 	end
