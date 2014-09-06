@@ -54,6 +54,10 @@ class ProjectsController < ApplicationController
 		@orderlink = Link.new
 	end
 
+	def invoice
+
+	end
+
 	def new
 		@project = Project.new
 	end
