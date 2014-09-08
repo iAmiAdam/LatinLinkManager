@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
 		@projects = @client.projects.where(:created_at => params[:month].beginning_of_month..params[:month].end_of_month)
 
 		format.pdf do
-      		render pdf: @order.payer_name,               
+      		render pdf: @client.name,               
 	            layout: 'layouts/invoice.html.erb',  
 	            show_as_html: params[:debug].present?    
     	end
