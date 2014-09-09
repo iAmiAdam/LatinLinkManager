@@ -1,11 +1,14 @@
 <div id="header">
 	<%= wicked_pdf_image_tag 'invoice_logo.png' %>
+	
 </div>
 
 <div id="content">
-
+		<% @projects.each do |p| %>
+			TODO TABLE PROJECTS AND COST
+		<% end %>
 </div>
 
 <div id="footer">
-	<%= wicked_pdf_image_tag 'invoice_foter.png' %>
+	<%= wicked_pdf_image_tag 'invoice_footer.png' %>
 </div>
