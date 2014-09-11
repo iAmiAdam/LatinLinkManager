@@ -44,11 +44,13 @@ class ClientsController < ApplicationController
 			end
 		end
 
-		format.pdf do
-      		render pdf: @client.name,               
-	            layout: 'layouts/invoice.html.erb',  
-	            show_as_html: params[:debug].present?    
-    	end
+		respond_to do |format|
+			format.pdf do
+	      		render pdf: @client.name,               
+		            layout: 'layouts/project_invoice.html.erb',  
+		            show_as_html: params[:debug].present?    
+	    	end
+	    end
 	end
 
 	def edit
