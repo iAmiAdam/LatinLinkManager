@@ -20,7 +20,9 @@
 	<table>
 		<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost</td></tr>
 		<% @projects.each do |p| %>
-			<tr><td><%= "#{@client.name} #{@project.count}" %></td><td><%= "#{@project.deadline} #{@project.time}" %></td><td>Purchase Order</td><td>Cost</td></tr>
+			<% @orders.each do |o| %>
+				<tr><td><%= "#{@client.name} #{@project.count}" %></td><td><%= "#{@project.deadline} #{@project.time}" %></td><td><%= @order.LLID %></td><td><%= @order.value %></td></tr>
+			<% end %>
 		<% end %>
 	</table>
 </div>
