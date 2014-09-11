@@ -33,6 +33,16 @@ class ClientsController < ApplicationController
 		@client = Client.find(params[:id])
 		@projects = @client.projects.where(:created_at => params[:month].beginning_of_month..params[:month].end_of_month)
 
+		@projects.each do |p|
+			@links = p.links
+			@links.each do |l|
+				order = Order.find(l.order_id)
+				if order.category == 0
+					@orders = @orders.to_a.push order
+				end
+			end
+		end
+
 		format.pdf do
       		render pdf: @client.name,               
 	            layout: 'layouts/invoice.html.erb',  
