@@ -45,10 +45,9 @@ class ClientsController < ApplicationController
 		end
 
 		respond_to do |format|
+			format.html
 			format.pdf do
-	      		render pdf: @client.name,               
-		            layout: 'layouts/project_invoice.html.erb',  
-		            show_as_html: params[:debug].present?    
+	      		render pdf: @client.name
 	    	end
 	    end
 	end
