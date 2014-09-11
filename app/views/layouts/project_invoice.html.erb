@@ -20,7 +20,7 @@
 	<table>
 		<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost</td></tr>
 		<% @projects.each do |p| %>
-			<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost</td></tr>
+			<tr><td><%= "#{@client.name} #{@project.count}" %></td><td><%= "#{@project.deadline} #{@project.time}" %></td><td>Purchase Order</td><td>Cost</td></tr>
 		<% end %>
 	</table>
 </div>
