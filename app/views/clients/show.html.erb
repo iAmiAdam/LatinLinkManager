@@ -19,6 +19,13 @@
 	</div>
 
 	<div class="well">
+		<h2 class="center">Invoice</h2>
+		<% @date = Date.today %>  
+
+		<%= link_to 'Create Invoice', "/clients/invoice/#{@client.id}/#{@date.strftime("%B")}", :format => :pdf %>
+	</div>
+
+	<div class="well">
 		<h2 class="center">Purchase Orders</h2>
 
 		<% if @orders %>
@@ -29,4 +36,6 @@
 			<% end %>
 		<% end %>
 	</div>
+
+
 </div>
