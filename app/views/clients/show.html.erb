@@ -22,7 +22,7 @@
 		<h2 class="center">Invoice</h2>
 		<% @date = Date.today %>  
 
-		<%= link_to 'Create Invoice', "/clients/invoice/#{@client.id}/#{@date.strftime("%B")}", :format => :pdf %>
+		<%= link_to 'Create Invoice', "/clients/invoice/#{@client.id}/#{@date.strftime("%b")}", :format => :pdf %>
 	</div>
 
 	<div class="well">

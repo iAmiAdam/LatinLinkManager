@@ -31,7 +31,8 @@ class ClientsController < ApplicationController
 	def invoice
 
 		@client = Client.find(params[:id])
-		@projects = @client.projects.where(:created_at => params[:month].beginning_of_month..params[:month].end_of_month)
+		time = Time.new(Time.now.year, params[:month])
+		@projects = @client.projects.where(:created_at => time.beginning_of_month..time.end_of_month)
 
 		@projects.each do |p|
 			@links = p.links
