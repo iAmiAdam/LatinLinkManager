@@ -47,7 +47,7 @@ class ClientsController < ApplicationController
 		respond_to do |format|
 			format.html
 			format.pdf do
-	      		render pdf: @client.name,
+	      		render pdf: "#{@client.name}",
 	      		:template => 'clients/invoice.pdf.html.erb'
 	    	end
 	    end
