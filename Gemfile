@@ -18,6 +18,7 @@ gem 'figaro'
 gem 'aws-sdk'
 gem 'json'
 gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 group :development, :test do
 	gem 'sqlite3', '1.3.8'
@@ -48,7 +49,7 @@ end
 group :production do
 	gem 'pg', '0.15.1'
 	gem 'rails_12factor', '0.0.2'
-	gem 'wkhtmltopdf-binary'
+	gem 'wkhtmltopdf-heroku'
 end
 
 
