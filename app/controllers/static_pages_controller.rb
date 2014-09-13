@@ -26,13 +26,11 @@ class StaticPagesController < ApplicationController
 					end
 				end
 			end
-			if @project.assignments.present?
-				@assignments = @project.assignments
-				if @assignments
-					@assignments.each do |ass|
-						@translators = @translators.to_a.push Translator.find(ass.translator_id)
-					end
-				end
+			@assignments = @project.assignments
+			@assignments.each do |ass|
+				@translators = @translators.to_a.push Translator.find(ass.translator_id)
+			end
+			rescue
 			end
 		end
 	end
