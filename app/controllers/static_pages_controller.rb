@@ -26,7 +26,7 @@ class StaticPagesController < ApplicationController
 					end
 				end
 			end
-			if @project.assignments != nil
+			if @project.assignments.present?
 				@assignments = @project.assignments
 				if @assignments
 					@assignments.each do |ass|
