@@ -1,11 +1,11 @@
 <div id="header">
 	<%= wicked_pdf_image_tag_for_public 'invoice_logo.png' %>
 	<div class="address">
-		Language Partners Ltd Trading as Latin Link
-		91 Cotham Brow
-		Bristol, BS6 6AW
-		Company: 8113770
-		VAT: GB150345246
+		Language Partners Ltd Trading as Latin Link<br />
+		91 Cotham Brow<br />
+		Bristol, BS6 6AW<br />
+		Company: 8113770<br />
+		VAT: GB150345246<br />
 	</div>
 	to
 	<div class="address">
@@ -18,22 +18,22 @@
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
 	</div>
 	<table>
-		<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost</td></tr>
+		<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost £</td></tr>
 		<% @projects.each do |p| %>
 			<% @orders.each do |o| %>
-				<tr><td><%= "#{@client.name} #{p.count}" %></td><td><%= "#{p.deadline} #{p.time}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
+				<tr><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
 			<% end %>
 		<% end %>
 	</table>
 </div>
 <div id="payment">
-	Payments to be made by way of bank transfer:
-	Language Partners Ltd
-	Bank: Santander
-	BIX: ABBYGB2LXXX
-	IBAN: GB76ABBY09012830125046
-	Sort code: 09-01-28
-	Account number: 30125046
+	Payments to be made by way of bank transfer:<br />
+	Language Partners Ltd<br />
+	Bank: Santander<br />
+	BIX: ABBYGB2LXXX<br />
+	IBAN: GB76ABBY09012830125046<br />
+	Sort code: 09-01-28<br />
+	Account number: 30125046<br />
 </div>
 <div id="footer">
 	<%= wicked_pdf_image_tag_for_public 'invoice_footer.png' %>
