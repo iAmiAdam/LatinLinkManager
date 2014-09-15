@@ -13,6 +13,11 @@ class StaticPagesController < ApplicationController
 				@links.each do |l|
 					@orders = @orders.to_a.push Order.find(l.order_id)
 				end
+				
+				@assignments = p.assignments
+				@assignments.each do |ass|
+					@translators = @translators.to_a.push Translator.find(ass.translator_id)
+				end
 			end
 
 			@revenue = 0
@@ -25,12 +30,6 @@ class StaticPagesController < ApplicationController
 						@cost += o.value.to_f
 					end
 				end
-			end
-			@assignments = @project.assignments
-			@assignments.each do |ass|
-				@translators = @translators.to_a.push Translator.find(ass.translator_id)
-			end
-			rescue
 			end
 		end
 	end
