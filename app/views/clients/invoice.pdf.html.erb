@@ -1,6 +1,6 @@
 <div id="header">
 	<%= wicked_pdf_image_tag_for_public 'invoice_logo.png' %>
-	<div class="address">
+	<div class="address" style="margin-top: 20px">
 		Language Partners Ltd Trading as Latin Link<br />
 		91 Cotham Brow<br />
 		Bristol, BS6 6AW<br />
@@ -8,13 +8,13 @@
 		VAT: GB150345246<br />
 	</div>
 	to
-	<div class="address">
+	<div class="address" style="margin-top: 20px">
 		Client Address
 	</div>
 </div>
 
 <div id="content">
-	<div id="thanks">
+	<div id="thanks" style="margin-top: 20px">
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
 	</div>
 	<table>
@@ -26,7 +26,7 @@
 		<% end %>
 	</table>
 </div>
-<div id="payment">
+<div id="payment" style="margin-top: 20px">
 	Payments to be made by way of bank transfer:<br />
 	Language Partners Ltd<br />
 	Bank: Santander<br />
@@ -35,6 +35,6 @@
 	Sort code: 09-01-28<br />
 	Account number: 30125046<br />
 </div>
-<div id="footer">
+<div id="footer" style="margin-top: 20px">
 	<%= wicked_pdf_image_tag_for_public 'invoice_footer.png' %>
 </div>
