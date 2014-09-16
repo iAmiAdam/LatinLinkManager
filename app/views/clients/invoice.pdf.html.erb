@@ -13,12 +13,12 @@
 	</div>
 </div>
 
-<div id="content">
+<div id="content" style="margin: 0 auto;">
 	<div id="thanks" style="margin-top: 20px">
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
 	</div>
 	<table>
-		<tr><td>Project ID</td><td>Deadline</td><td>Purchase Order</td><td>Cost £</td></tr>
+		<tr><td><b>Project ID</b></td><td><b>Deadline</b></td><td><b>Purchase Order</b></td><td><b>Cost (GBP)</b></td></tr>
 		<% @projects.each do |p| %>
 			<% @orders.each do |o| %>
 				<tr><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
