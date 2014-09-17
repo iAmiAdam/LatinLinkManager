@@ -12,7 +12,7 @@
 		Client Address
 	</div>
 </div>
-
+<% i = 0 %>
 <div id="content" style="width:100%; text-align: center;">
 	<div id="thanks" style="margin-top: 20px; display: inline-block;">
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
@@ -26,6 +26,7 @@
 				<% else %>
 					<tr style="background-color: #fde9d9; border-bottom: 1px solid #f79646;"><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
 				<% end %>
+				<% i++ %>
 			<% end %>
 		<% end %>
 	</table>
