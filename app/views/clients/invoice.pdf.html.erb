@@ -22,16 +22,16 @@
 	<div id="thanks" style="margin-top: 20px; display: inline-block;">
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
 	</div>
-	<table border="1" cellpadding="5" style=" display: inline-block; font-family: 'Calibri'; border-collapse:collapse; border: 2px solid #0094d0; margin: 5px;">
+	<table border="1" cellpadding="5" style=" display: inline-block; font-family: 'Calibri'; border-collapse:collapse; border: 2px solid #f79646; margin: 5px;">
 		<tr style="color: #fff; background-color: #f79646; border-bottom: 1px solid #f79646;"><td><b>Project ID</b></td><td><b>Deadline</b></td><td><b>Purchase Order</b></td><td><b>Cost (GBP)</b></td></tr>
 		<% @projects.each do |p| %>
 			<% @orders.each do |o| %>
 				<% if i % 2 == 0 %>
 					<tr style="border-bottom: 1px solid #f79646;"><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
-					<% i++ %>
+					<% i = i + 1 %>
 				<% else %>
 					<tr style="background-color: #fde9d9; border-bottom: 1px solid #f79646;"><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
-					<% i++ %>
+					<% i = i + 1 %>
 				<% end %>
 			<% end %>
 		<% end %>
