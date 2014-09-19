@@ -14,7 +14,10 @@
 	</div>
 	to
 	<div class="address" style="color: #0094d0; margin-top: 20px;">
-		Client Address
+		Adam Smith <br />
+		4 Ilkeston Road <br />
+		Stapleford <br />
+		Nottingham <br />
 	</div>
 </div>
 <% i = 0 %>
@@ -23,7 +26,7 @@
 		Many thanks for your recent business with Latin Link. Below is a breakdown of your invoice.
 	</div>
 	<table border="1" cellpadding="5" style=" display: inline-block; font-family: 'Calibri'; border-collapse:collapse; border: 1px solid #f79646; margin: 5px;">
-		<tr style="color: #fff; background-color: #f79646; border-bottom: 1px solid #f79646;"><td><b>Project ID</b></td><td><b>Deadline</b></td><td><b>Purchase Order</b></td><td><b>Cost (GBP)</b></td></tr>
+		<tr style="color: #fff; background-color: #f79646; border-bottom: 1px solid #f79646;"><td><b>Project</b></td><td><b>Deadline</b></td><td><b>Purchase Order</b></td><td><b>Cost (GBP)</b></td></tr>
 		<% @projects.each do |p| %>
 			<% @orders.each do |o| %>
 				<% if i % 2 == 0 %>
