@@ -8,11 +8,16 @@
 	src: asset-url('fonts/ITCAvantGardeStd-XLt.otf') format('otf');
 }
 
-#header h1 {
+h1 {
 	font-family: 'ITCAvantStdBold';
 	color: #0094d0;
 }
 
-#header h2 {
+h2 {
 	font-family: 'ITCAvantStdXlt'
+}
+
+#footer {
+	margin-top: 20px;
+	float: right;
 }
