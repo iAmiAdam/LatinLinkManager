@@ -1,0 +1,35 @@
+@font-face {
+	font-family: 'ITCAvantStdBold';
+	src: asset-url('fonts/ITCAvantGardeStd-Bold.otf') format('otf'); 
+}
+
+@font-face {
+	font-family: 'ITCAvantStdXlt';
+	src: asset-url('fonts/ITCAvantGardeStd-XLt.otf') format('otf');
+}
+
+h1 {
+	font-family: 'ITCAvantStdBold';
+	color: #0094d0;
+}
+
+h2 {
+	font-family: 'ITCAvantStdXlt'
+}
+
+#title {
+	color: #f5821f; 
+	font-weight: bold; 
+	float: right;
+}
+
+.address {
+	color: #0094d0; 
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#footer {
+	margin-top: 20px;
+	float: right;
+}
