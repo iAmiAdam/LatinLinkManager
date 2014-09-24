@@ -1,11 +1,11 @@
 @font-face {
 	font-family: 'ITCAvantStdBold';
-	src: asset-url('fonts/ITCAvantGardeStd-Bold.otf') format('otf'); 
+	src: asset-url('fonts/ITCAvantGardeStd-Bold.otf') format('truetype'); 
 }
 
 @font-face {
 	font-family: 'ITCAvantStdXlt';
-	src: asset-url('fonts/ITCAvantGardeStd-XLt.otf') format('otf');
+	src: asset-url('fonts/ITCAvantGardeStd-XLt.otf') format('truetype');
 }
 
 h1 {
