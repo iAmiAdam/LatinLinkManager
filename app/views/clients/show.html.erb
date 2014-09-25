@@ -19,10 +19,16 @@
 	</div>
 
 	<div class="well">
-		<h2 class="center">Invoice</h2>
-		<% @date = Date.today %>  
+		<h2 class="center">Invoices</h2>
 
-		<%= link_to 'Create Invoice', "/clients/invoice/#{@client.id}/#{@date.strftime("%m")}.pdf" %>
+		<% date = Date.today %>
+		<% today = date.strftime('%m') %>
+		<% until @months.to_i == today.to_i + 1 %>
+			<%= link_to Date::MONTHNAMES[@months.to_i], root_url+"clients/invoice/#{@client.id}/#{@months}.pdf" %> <br /> 
+			<% temp = @months.to_i %>
+			<% temp += 1 %>
+			<% @months = temp.to_s %>
+		<% end %>
 	</div>
 
 	<div class="well">

@@ -12,6 +12,24 @@ class ClientsController < ApplicationController
 		@links.each do |l|
 			@orders = @orders.to_a.push Order.find(l.order_id)
 		end
+
+		date = Date.today
+		month = date.strftime('%m')
+		continue = true
+
+		while continue 
+			time = Time.new(Time.now.year, month)
+			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month, :client_id => @client.id).order("updated_at DESC")
+			if @projects.size > 0
+				tempmonth = month.to_f
+				tempmonth -= 1
+				month = tempmonth.to_s
+			else 
+				@months = month.to_i + 1
+				continue = false
+			end
+		end
+
 	end
 
 	def new
