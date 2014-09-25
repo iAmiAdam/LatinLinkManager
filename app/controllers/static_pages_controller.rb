@@ -6,17 +6,20 @@ class StaticPagesController < ApplicationController
 		@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month).order("deadline DESC")
 		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false).order("deadline DESC")
 		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true).order("updated_at DESC")
-
+		@assignments
 		if @projects.size > 0
 			@projects.each do |p|
 				@links = p.links
 				@links.each do |l|
 					@orders = @orders.to_a.push Order.find(l.order_id)
 				end
-				
-				@assignments = p.assignments
-				@assignments.each do |ass|
-					@translators = @translators.to_a.push Translator.find(ass.translator_id)
+
+				if p.assignments != nil
+					@assigns = p.assignments
+					@assigns.each do |ass|
+						@assignments = @assignments.to_a.push ass
+						@translators = @translators.to_a.push Translator.find(ass.translator_id)
+					end
 				end
 			end
 
