@@ -1,6 +1,15 @@
 <% provide(:title, 'Home') %>
 
 <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
+	<% date = Date.today %>
+	<% today = date.strftime('%m') %>
+	<%= @months %>
+	<% until @months.to_i == today.to_i %>
+		<%= link_to @months, root_url+"/#{@months}" %>
+		<% temp = @months.to_i %>
+		<% temp += 1 %>
+		<% @months = temp.to_s %>
+	<% end %>
 	<div class="well">
 		<% if @projects.size > 0 && @orders != nil %>
 			<div id="accordion" class="panel-group">

@@ -15,7 +15,8 @@ class StaticPagesController < ApplicationController
 				tempmonth -= 1
 				month = tempmonth.to_s
 			else 
-				@months = Time.new(Time.now.year, month)
+				date = Time.new(Time.now.year, month)
+				@months = date.strftime('%m')
 				continue = false
 			end
 		end
