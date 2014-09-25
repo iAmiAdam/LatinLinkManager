@@ -33,6 +33,7 @@ LatinLinkManager::Application.routes.draw do
   match '/clientorders', to: 'orders#clients', via: 'get'
   match '/translatororders', to: 'orders#translators', via: 'get'
   match '/clients/invoice/:id/:month', to: 'clients#invoice', via: 'get'
+  match '/:month', to: 'static_pages#home', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
