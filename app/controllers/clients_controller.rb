@@ -82,6 +82,7 @@ class ClientsController < ApplicationController
 		
 		@client = Client.find(params[:id])
 		if @client.update_attributes(client_params)
+			@client.save
 			redirect_to clients_path
 		else
 			render 'edit'
