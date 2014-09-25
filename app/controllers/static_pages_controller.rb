@@ -3,11 +3,29 @@ class StaticPagesController < ApplicationController
 
 	def home
 
+		date = Date.today
+		month = date.strftime('%m')
+		continue = true
+
+		while continue 
+			time = Time.new(Time.now.year, month)
+			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
+			if @projects.size > 0
+				tempmonth = month.to_f
+				tempmonth -= 1
+				month = tempmonth.to_s
+			else 
+				@months = Time.new(Time.now.year, month)
+				continue = false
+			end
+		end
+
+
 		if (params[:month])
 			time = Time.new(Time.now.year, params[:month])
 			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
 			@deadlines = Project.where(:deadline => time.beginning_of_month..time.end_of_month).order("deadline DESC")
-			@open = Project.where(:deadline => time.beginning_of_month..time..end_of_month, :closed => false).order("deadline DESC")
+			@open = Project.where(:deadline => time.beginning_of_month..time.end_of_month, :closed => false).order("deadline DESC")
 			@closed = Project.where(:deadline => time.beginning_of_month..time.end_of_month, :closed => true).order("updated_at DESC")
 		else 
 			@projects = Project.where(:created_at => Time.now.beginning_of_month..Time.now.end_of_month).order("updated_at DESC")
