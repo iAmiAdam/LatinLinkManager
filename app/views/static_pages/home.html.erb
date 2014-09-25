@@ -35,9 +35,15 @@
 								<% @deadlines.each do |d| %>
 								<% @client = Client.find(d.client_id) %>
 								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td><td><table>
-									<% if @translators != nil %>
-										<% @translators.each do |t| %>
-											<tr><td><%= t.name %></td></tr>
+									<% if @assignments != nil %>
+										<% @assignments.each do |a| %>
+											<% if a.project_id == d.project_id %>
+												<% @translators.each do |t| %>
+													<% if a.translator_id == t.id %>
+														<tr><td><%= t.name %></td></tr>
+													<% end %>
+												<% end %>
+											<% end %>
 										<% end %>
 									<% end %>
 								</table></td></tr>
