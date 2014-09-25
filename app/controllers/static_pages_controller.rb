@@ -2,10 +2,19 @@ class StaticPagesController < ApplicationController
 	before_action :signed_in_user
 
 	def home
-		@projects = Project.where(:created_at => Time.now.beginning_of_month..Time.now.end_of_month).order("updated_at DESC")
-		@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month).order("deadline DESC")
-		@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false).order("deadline DESC")
-		@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true).order("updated_at DESC")
+
+		if (params[:month])
+			time = Time.new(Time.now.year, params[:month])
+			@projects = Project.where(:created_at => time.beginning_of_month..time.now.end_of_month).order("updated_at DESC")
+			@deadlines = Project.where(:deadline => time.now.beginning_of_month..time.now.end_of_month).order("deadline DESC")
+			@open = Project.where(:deadline => time.now.beginning_of_month..time.now.end_of_month, :closed => false).order("deadline DESC")
+			@closed = Project.where(:deadline => time.now.beginning_of_month..time.now.end_of_month, :closed => true).order("updated_at DESC")
+		else 
+			@projects = Project.where(:created_at => Time.now.beginning_of_month..Time.now.end_of_month).order("updated_at DESC")
+			@deadlines = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month).order("deadline DESC")
+			@open = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => false).order("deadline DESC")
+			@closed = Project.where(:deadline => Time.now.beginning_of_month..Time.now.end_of_month, :closed => true).order("updated_at DESC")
+		end
 		@assignments
 		if @projects.size > 0
 			@projects.each do |p|
