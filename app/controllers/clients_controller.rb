@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
 
 		while continue 
 			time = Time.new(Time.now.year, month)
-			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month, :client_id => @client.id).order("updated_at DESC")
+			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month, :client_id => @client.id.to_s).order("updated_at DESC")
 			if @projects.size > 0
 				tempmonth = month.to_f
 				tempmonth -= 1
