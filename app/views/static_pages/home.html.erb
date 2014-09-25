@@ -37,7 +37,7 @@
 								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td><td><table>
 									<% if @assignments != nil %>
 										<% @assignments.each do |a| %>
-											<% if a.project_id == d.project_id %>
+											<% if a.project_id == d.id %>
 												<% @translators.each do |t| %>
 													<% if a.translator_id == t.id %>
 														<tr><td><%= t.name %></td></tr>
