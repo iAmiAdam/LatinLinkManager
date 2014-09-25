@@ -62,7 +62,7 @@ class ClientsController < ApplicationController
 			end
 		end
 
-		@month = Date::MONTHNAMES[params[:month]]
+		@month = Date::MONTHNAMES[params[:month].to_s]
 
 		respond_to do |format|
 			format.html
