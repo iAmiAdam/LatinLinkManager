@@ -3,9 +3,8 @@
 <div class="col-xs-12 col-sm-12 col-md-offset-2 col-md-8 col-lg-offset-2 col-lg-8">
 	<% date = Date.today %>
 	<% today = date.strftime('%m') %>
-	<%= @months %>
-	<% until @months.to_i == today.to_i %>
-		<%= link_to @months, root_url+"/#{@months}" %>
+	<% until @months.to_i == today.to_i + 1 %>
+		<%= link_to Date::MONTHNAMES[@months.to_i], root_url+"#{@months}" %> | 
 		<% temp = @months.to_i %>
 		<% temp += 1 %>
 		<% @months = temp.to_s %>
