@@ -30,7 +30,7 @@
 	<div class="well">
 		<h2 class="center">Client</h2>
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
-		<p>Value: £<%= @value %></p>
+		<p>Value: £<%= @value.round(2) %></p>
 		<p>Profit: £<%= (@value - @cost).round(2) %></p>
 		<p>Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %></p>
 		<p>Project #<%= @project.count %></p>
