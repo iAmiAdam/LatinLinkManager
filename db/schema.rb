@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805092033) do
+ActiveRecord::Schema.define(version: 20140925125830) do
 
   create_table "assets", force: true do |t|
     t.string   "file_file_name"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20140805092033) do
     t.string   "contact"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "address"
   end
 
   create_table "links", force: true do |t|

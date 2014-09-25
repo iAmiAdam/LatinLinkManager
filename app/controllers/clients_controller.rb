@@ -37,6 +37,7 @@ class ClientsController < ApplicationController
 	end
 
 	def create 
+
 		@client = Client.new(client_params)
 		if @client.save
 			flash[:success] = "Client Created"
@@ -78,9 +79,10 @@ class ClientsController < ApplicationController
 	end
 
 	def update 
+		
 		@client = Client.find(params[:id])
-		if @client.update_attributes[client_params]
-			redirect_to allclients_path
+		if @client.update_attributes(client_params)
+			redirect_to clients_path
 		else
 			render 'edit'
 		end
@@ -95,10 +97,14 @@ class ClientsController < ApplicationController
 	private
 
 		def client_params
-			params.require(:client).permit(:name, :contact)
+			params.require(:client).permit(:name, :contact, :address)
 		end
 
 		def signed_in_user
   			redirect_to root_url, notice: "Please Sign in." unless signed_in?
+  		end
+
+  		def format
+  			params[:address] = simple_format(params[:address])
   		end
 end
