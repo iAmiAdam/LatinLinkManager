@@ -62,6 +62,8 @@ class ClientsController < ApplicationController
 			end
 		end
 
+		@month = Date::MONTHNAMES[params[:month]]
+
 		respond_to do |format|
 			format.html
 			format.pdf do
