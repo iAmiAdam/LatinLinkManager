@@ -24,7 +24,7 @@
 		<% date = Date.today %>
 		<% today = date.strftime('%m') %>
 		<% until @months.to_i == today.to_i + 1 %>
-			<%= link_to Date::MONTHNAMES[@months.to_i], root_url+"clients/invoice/#{@client.id}/#{@months}.pdf" %> <br /> 
+			<%= link_to Date::MONTHNAMES[@months.to_i], root_url+"clients/invoice/#{@client.id}/#{@months}.pdf" %> |
 			<% temp = @months.to_i %>
 			<% temp += 1 %>
 			<% @months = temp.to_s %>
