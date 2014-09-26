@@ -5,7 +5,7 @@
 		<table class="table table-hover">
 			<tr><td>ID</td><td>Value</td><td>Type</td><td>Paid</td><td>Delete</td></tr>
 			<% @orders.each do |order| %>
-			<tr><td><%= link_to order.LLID, order.id.to_s %></td>
+			<tr><td><%= link_to order.LLID, orders_path + "/"+ order.id.to_s %></td>
 				<td><%= order.value %></td>
 				<td><% if order.category == 0 %>
 						Client </td>
@@ -13,11 +13,11 @@
 						Translator </td>
 					<% end %>
 				<td><% if order.paid == true %>
-						<%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), "/paid/"+order.id.to_s, :method => :put %></td>
+						<%= link_to content_tag('i', '', class: 'fa fa-check-square-o fa-2x'), orders_path+"/paid/"+order.id.to_s, :method => :put %></td>
 					<% else %>
-						<%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), "/paid/"+order.id.to_s, :method => :put %></td>
+						<%= link_to content_tag('i', '', class: 'fa fa-square-o fa-2x'), orders_path+"/paid/"+order.id.to_s, :method => :put %></td>
 					<% end %>
-				<td><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), "/"+order.id.to_s, data: { confirm: "Are you sure you want to delete this Order?" }, method: :delete %></td></tr>
+				<td><%= link_to content_tag('i', '', class: 'fa fa-trash-o fa-2x'), orders_path+"/"+order.id.to_s, data: { confirm: "Are you sure you want to delete this Order?" }, method: :delete %></td></tr>
 			<% end %>
 		</table>
 		</tbody>
