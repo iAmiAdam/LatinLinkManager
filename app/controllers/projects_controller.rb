@@ -113,7 +113,17 @@ class ProjectsController < ApplicationController
 		@project = @client.projects.build
 		@project.source = new_project_params[:source]
 		@project.target = new_project_params[:target]
-		@project.count = @client.name +  " " + (@client.projects.count + 1).to_s
+		if params[:count] 
+			@project.count = @client.name + " " + params[:count]
+		else
+			project = Project.order("created_at").last
+			if project != nil
+				number = project.count.scan(/\d+\z/).first
+				@project.count = @client.name +  " " + (number.to_i + 1).to_s
+			else
+				@project.count = @client.name + "  1"  
+			end
+		end
 		@project.deadline = new_project_params[:deadline]
 		@project.time = new_project_params[:time]
 		@project.cost = new_project_params[:value]
