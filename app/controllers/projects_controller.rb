@@ -113,8 +113,8 @@ class ProjectsController < ApplicationController
 		@project = @client.projects.build
 		@project.source = new_project_params[:source]
 		@project.target = new_project_params[:target]
-		if params[:count] 
-			@project.count = @client.name + " " + params[:count]
+		if new_project_params[:count] != ""
+			@project.count = @client.name + " " + new_project_params[:count]
 		else
 			project = Project.order("created_at").last
 			if project != nil
@@ -255,7 +255,7 @@ class ProjectsController < ApplicationController
 	private
 
 		def new_project_params
-			params.require(:project).permit(:client, :cost, :source, :target, :value, :deadline, :time, assets_attributes: [:file])
+			params.require(:project).permit(:client, :cost, :source, :target, :value, :deadline, :time, :count, assets_attributes: [:file])
 		end
 
 		def new_asset_params

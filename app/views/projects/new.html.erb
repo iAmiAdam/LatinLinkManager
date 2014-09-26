@@ -11,6 +11,10 @@
 		<%= f.collection_select :client, Client.all, :id, :name, {}, {:class => "form-control"}  %>
 	</div>
 	<div class="form-group">
+		<%= f.label :number %>
+		<%= f.text_field :count, class: "form-control" %>
+	</div>
+	<div class="form-group">
 		<%= f.label :source %>
 		<%= f.select :source, options_for_select(%w[English Spanish Portuguese French Italian]), {}, {:class => "form-control"} %>
 		<%= f.label :target %>
