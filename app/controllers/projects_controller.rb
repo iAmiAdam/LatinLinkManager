@@ -218,12 +218,12 @@ class ProjectsController < ApplicationController
 	end
 
 	def not_closed
-		@projects = Project.where(:closed => false).all
+		@projects = Project.where(:closed => false).paginate(:per_page => 10, page: params[:page]).order('id DESC')
 		render 'index'
 	end 
 
 	def closed
-		@projects = Project.where(:closed => true).all
+		@projects = Project.where(:closed => true).paginate(:per_page => 10, page: params[:page]).order('id DESC')
 		render 'index'
 	end
 
