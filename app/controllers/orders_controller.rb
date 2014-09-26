@@ -13,12 +13,12 @@ class OrdersController < ApplicationController
 	end
 
 	def open
-		@orders = Order.where(:paid => false).all
+		@orders = Order.where(:paid => false).paginate(:per_page => 10, page: params[:page])
 		render 'index'
 	end
 
 	def closed
-		@orders = Order.where(:paid => true).all
+		@orders = Order.where(:paid => true).paginate(:per_page => 10, page: params[:page])
 		render 'index'
 	end
 
