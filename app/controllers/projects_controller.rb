@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
 	end	
 
 	def email
-
+		@project = Project.find(params[:project_id])
 	end
 
 	def asset
