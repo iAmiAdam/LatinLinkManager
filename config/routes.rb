@@ -6,7 +6,7 @@ LatinLinkManager::Application.routes.draw do
   match '/projects/open', to: 'projects#not_closed', via: 'get'
   match '/projects/closed', to: 'projects#closed', via: 'get'
   match '/projects/emailtranslator', to: 'projects#send_email', via: 'post'
-  match '/projects/email/:id', to: 'projects#email', via: 'post'
+  match '/projects/email/', to: 'projects#email', via: 'post'
   match '/orders/paid/:id', to: 'orders#paid', via: 'put'
   match '/orders/paid', to: 'orders#closed', via: 'get'
   match '/orders/unpaid', to: 'orders#open', via: 'get'
