@@ -98,6 +98,12 @@ class ProjectsController < ApplicationController
 
 	def email
 		@project = Project.find(params[:project_id])
+
+		@project.assets.each do |a|
+		if a.file_content_type == "application/octet-stream"
+			@assets = @assets.to_a.push a
+		end
+	end
 	end
 
 	def asset
