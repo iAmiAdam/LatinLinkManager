@@ -26,11 +26,10 @@ class ProjectMailer < ActionMailer::Base
 
 	@message = message
 
-	@project.assets.each do |a|
-		if a.file_content_type == "application/octet-stream"
-			attachments[a.file_file_name] = open(a.file.url).read()
-		end
-	end
+	
+	
+	attachments[@asset.file_file_name] = open(@asset.file.url).read()
+	
 
 	attachments.inline["logo"] = File.read("#{Rails.root.to_s + '/app/assets/images/emaillogo.png'}", mode: "rb")
 	
