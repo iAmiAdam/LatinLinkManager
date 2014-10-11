@@ -88,6 +88,8 @@ class ProjectsController < ApplicationController
 
 		@manager = current_user
 
+		@asset = Asset.find(params[:asset])
+
 		ProjectMailer.project_email(@translator, @project, @rate, @total, params[:handoff], params[:request], params[:message], @manager, @order.LLID).deliver
 		ProjectMailer.project_email(@manager, @project, @rate, @total, params[:handoff], params[:request], params[:message], @manager, @order.LLID).deliver
 
