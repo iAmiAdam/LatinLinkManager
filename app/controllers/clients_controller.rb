@@ -53,12 +53,15 @@ class ClientsController < ApplicationController
 		time = Time.new(Time.now.year, params[:month])
 		@projects = @client.projects.where(:created_at => time.beginning_of_month..time.end_of_month)
 
+		@value = 0
+
 		@projects.each do |p|
 			@links = p.links
 			@links.each do |l|
 				order = Order.find(l.order_id)
 				if order.category == 0
 					@orders = @orders.to_a.push order
+					@value += order.value
 				end
 			end
 		end

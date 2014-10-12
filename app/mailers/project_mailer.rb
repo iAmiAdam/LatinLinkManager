@@ -25,7 +25,6 @@ class ProjectMailer < ActionMailer::Base
 	@signature = manager.signature
 
 	@message = message
-
 	
 	
 	attachments[@asset.file_file_name] = open(@asset.file.url).read()
