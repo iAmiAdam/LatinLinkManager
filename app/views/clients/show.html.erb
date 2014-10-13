@@ -31,17 +31,7 @@
 		<% end %>
 	</div>
 
-	<div class="well">
-		<h2 class="center">Purchase Orders</h2>
-
-		<% if @orders %>
-			<% @orders.each do |o| %>
-
-			<%= link_to o.LLID, "/orders/"+o.id.to_s %>
-
-			<% end %>
-		<% end %>
-	</div>
+	
 
 
 </div>
