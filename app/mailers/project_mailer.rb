@@ -1,8 +1,10 @@
 class ProjectMailer < ActionMailer::Base
 
-  def project_email(translator, project, rate, total, handoff, request, message, manager, order)
+  def project_email(translator, project, rate, total, handoff, request, message, manager, order, asset)
   	@translator = translator
   	@project = project
+
+  	@asset = asset
 
   	@words = Breakdown.new
 	@percents = Breakdown.new
