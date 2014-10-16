@@ -61,7 +61,7 @@ class ClientsController < ApplicationController
 				order = Order.find(l.order_id)
 				if order.category == 0
 					@orders = @orders.to_a.push order
-					@value += order.value
+					@value += order.value.to_f
 				end
 			end
 		end
