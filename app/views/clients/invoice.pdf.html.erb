@@ -43,7 +43,7 @@
 					<% end %>
 				<% end %>
 				<% if i % 2 == 0 %>
-					<tr style="border-bottom: 1px solid #f79646;"><td><%= "#{p.count}" %></td><td><%= "#{p.deadline} #{p.time.strftime("%l:%M")}" %></td><td><%= o.LLID %></td><td><%= o.value %></td></tr>
+					<tr style="border-bottom: 1px solid #f79646;"><td></td><td></td><td></td><td><%= @value.round(2).to_s %></td></tr>
 				<% else %>
 					<tr style="background-color: #fde9d9; border-bottom: 1px solid #f79646;"><td></td><td></td><td></td><td>£<%= @value.round(2).to_s %></td></tr>
 				<% end %>
