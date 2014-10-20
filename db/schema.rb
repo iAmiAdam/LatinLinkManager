@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925125830) do
+ActiveRecord::Schema.define(version: 20141020135039) do
 
   create_table "assets", force: true do |t|
     t.string   "file_file_name"
@@ -93,9 +93,11 @@ ActiveRecord::Schema.define(version: 20140925125830) do
     t.datetime "updated_at"
     t.string   "client"
     t.string   "client_id"
-    t.boolean  "closed",     default: false
+    t.boolean  "closed",              default: false
     t.date     "deadline"
     t.time     "time"
+    t.date     "translator_deadline"
+    t.time     "translator_time"
   end
 
   create_table "searches", force: true do |t|

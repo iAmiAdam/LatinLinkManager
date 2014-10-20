@@ -134,6 +134,8 @@ class ProjectsController < ApplicationController
 		end
 		@project.deadline = new_project_params[:deadline]
 		@project.time = new_project_params[:time]
+		@project.translator_deadline = new_project_params[:translator_deadline]
+		@project.translator_time = new_project_params[:translator_time]
 		@project.cost = new_project_params[:value]
 		if @project.save
 			@asset = @project.assets.build(new_asset_params)
