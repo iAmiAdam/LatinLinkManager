@@ -9,7 +9,7 @@
 		<%= label_tag :request, "Request" %>
 		<%= text_field_tag :request, nil, class: "form-control" %>
 		<%= label_tag :message, "Message" %>
-		<%= text_area_tag :message, nil, class: "form-control" %>
+		<%= text_area_tag :message, nil, rows: 10, class: "form-control" %>
 		<%= label_tag :files, "File" %>
 		<%= select_tag "asset", options_from_collection_for_select(@assets, "id", "file_file_name"), class: "form-control" %>
 		<%= hidden_field_tag :translator_id, params[:translator_id] %>
