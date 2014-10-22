@@ -2,13 +2,22 @@
 <html>
 	<head>
 		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<style>
+			p {
+				font-family: 'Calibri';
+			}
+			p.footer {
+				font-family: 'Calibri';
+				margin-bottom: 0;
+			}
+		</style>
 	</head>
 
 	<body>
 
 		<%= image_tag attachments["logo"].url %>
 
-		<p style="font-family: 'Calibri';"><%= simple_format(@message) %></p>
+		<p style="font-family: 'Calibri'; color: #000;"><%= simple_format(@message, class: p ) %></p>
 
 
 		<p style="font-family: 'Calibri'; color: #f5821f; font-weight: bold;">Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %></p>
@@ -46,12 +55,12 @@
 			</tbody>
 		</table>
 
-		<p style="font-family: 'Calibri';">
-			<%= @signature %><br />
+		
+			<%= simple_format(@signature, class: p) %>
+		<p>
 			Web | <a href="http://latinlink.com">latinlink.com</a><br />
 			Twitter | @latinlinks<br />
 			<%= image_tag attachments["footer_logo"].url %>
-
 		</p>
 	</body>
 </html>
