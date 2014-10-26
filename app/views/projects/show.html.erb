@@ -32,6 +32,7 @@
 		<p><%= link_to @client.name, "/clients/"+@client.id.to_s %></p>
 		<p>Value: £<%= @value.round(2) %></p>
 		<p>Profit: £<%= (@value - @cost).round(2) %></p>
+		<p>Translator deadline: <%= @project.translator_deadline %> <%= @project.translator_time.strftime("%l:%M") %></p>
 		<p>Deadline: <%= @project.deadline %> <%= @project.time.strftime("%l:%M") %></p>
 		<p>Project #<%= @project.count %></p>
 		<p><%= @project.source %> -> <%= @project.target %></p>
