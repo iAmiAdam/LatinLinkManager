@@ -14,3 +14,9 @@
 		pickDate: false
 	});
 })`
+
+`$(document).ready(function() {
+	$('#project_translator_time').datetimepicker({
+		pickDate: false
+	});
+})`
