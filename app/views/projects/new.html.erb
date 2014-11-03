@@ -18,7 +18,7 @@
 		<%= f.label :source %>
 		<%= f.select :source, options_for_select(%w[English Spanish Portuguese French Italian]), {}, {:class => "form-control"} %>
 		<%= f.label :target %>
-		<%= f.select :target, options_for_select(%w[Spanish English Portuguese French Italian]), {}, {:class => "form-control"} %>
+		<%= f.select :target, options_for_select(%w[Spanish English(UK) English(US) Portuguese French Italian]), {}, {:class => "form-control"} %>
 	</div>
 	<div class="form-group">
 		<%= f.label :deadline %>

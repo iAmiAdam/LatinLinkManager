@@ -10,15 +10,23 @@
 })`
 
 `$(document).ready(function() {
+
+	var d = new Date();
+
 	$('#project_time').datetimepicker({
 		pickDate: false,
-		timeFormat: HH:MM
+		format: "HH:mm",
+		minuteStepping: 15,
 	});
+
 })`
 
 `$(document).ready(function() {
+
 	$('#project_translator_time').datetimepicker({
 		pickDate: false,
-		timeFormat: HH:MM
+		format: "HH:mm",
+		minuteStepping: 15
 	});
+
 })`
