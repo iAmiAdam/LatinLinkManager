@@ -11,12 +11,14 @@
 
 `$(document).ready(function() {
 	$('#project_time').datetimepicker({
-		pickDate: false
+		pickDate: false,
+		timeFormat: HH:MM
 	});
 })`
 
 `$(document).ready(function() {
 	$('#project_translator_time').datetimepicker({
-		pickDate: false
+		pickDate: false,
+		timeFormat: HH:MM
 	});
 })`
