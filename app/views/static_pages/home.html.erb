@@ -24,7 +24,7 @@
 								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
 								<% @projects.each do |p| %>
 								<% @client = Client.find(p.client_id) %>
-								<tr><td><%= @client.name %></td><td><%= link_to p.count.to_s, "projects/"+p.id.to_s %></td><td><%= p.deadline %> <%= p.time.strftime("%l:%M") unless p.time == nil %></td></tr>
+								<tr><td><%= @client.name %></td><td><%= link_to p.count.to_s, "projects/"+p.id.to_s %></td><td><%= p.deadline %> <%= p.time.strftime("%H:%M") unless p.time == nil %></td></tr>
 								<% end %>
 							</table>
 						</div>
@@ -42,7 +42,7 @@
 								<tr><td>Client</td><td>Number</td><td>Deadline</td><td>Translators</td></tr>
 								<% @deadlines.each do |d| %>
 								<% @client = Client.find(d.client_id) %>
-								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%l:%M") unless d.time == nil %></td><td><table>
+								<tr><td><%= @client.name %></td><td><%= link_to d.count.to_s, "projects/"+d.id.to_s %></td><td><%= d.deadline %> <%= d.time.strftime("%H:%M") unless d.time == nil %></td><td><table>
 									<% if @assignments != nil %>
 										<% @assignments.each do |a| %>
 											<% if a.project_id.to_s == d.id.to_s %>
@@ -72,7 +72,7 @@
 								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
 								<% @open.each do |o| %>
 								<% @client = Client.find(o.client_id) %>
-								<tr><td><%= @client.name %></td><td><%= link_to o.count.to_s, "projects/"+o.id.to_s %></td><td><%= o.deadline %> <%= o.time.strftime("%l:%M") unless o.time == nil %></td></tr>
+								<tr><td><%= @client.name %></td><td><%= link_to o.count.to_s, "projects/"+o.id.to_s %></td><td><%= o.deadline %> <%= o.time.strftime("%H:%M") unless o.time == nil %></td></tr>
 								<% end %>
 							</table>
 						</div>
@@ -90,7 +90,7 @@
 								<tr><td>Client</td><td>Number</td><td>Deadline</td></tr>
 								<% @closed.each do |c| %>
 								<% @client = Client.find(c.client_id) %>
-								<tr><td><%= @client.name %></td><td><%= link_to c.count.to_s, "projects/"+c.id.to_s %></td><td><%= c.deadline %> <%= c.time.strftime("%l:%M") unless c.time == nil %></td></tr>
+								<tr><td><%= @client.name %></td><td><%= link_to c.count.to_s, "projects/"+c.id.to_s %></td><td><%= c.deadline %> <%= c.time.strftime("%H:%M") unless c.time == nil %></td></tr>
 								<% end %>
 							</table>
 						</div>
