@@ -20,7 +20,7 @@
 		<p style="font-family: 'Calibri'; color: #000;"><%= simple_format(@message, class: p ) %></p>
 
 
-		<p style="font-family: 'Calibri'; color: #f5821f; font-weight: bold;">Deadline: <%= @project.translator_deadline %> <%= @project.translator_time.strftime("%l:%M") %></p>
+		<p style="font-family: 'Calibri'; color: #f5821f; font-weight: bold;">Deadline: <%= @project.translator_deadline %> <%= @project.translator_time.strftime("%H:%M") %></p>
 
 		<table border="1" cellpadding="5" style="font-family: 'Calibri'; border-collapse:collapse; border: 2px solid #0094d0; margin: 5px;">
 			<tr><td><b>Source Language</b></td><td><%= @project.source %></td></tr>
