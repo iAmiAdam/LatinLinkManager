@@ -17,6 +17,7 @@ class StaticPagesController < ApplicationController
 				if (tempmonth == 0)
 					tempmonth = 12
 					year -= 1
+				end
 				month = tempmonth.to_s
 			else 
 				@months = month.to_i + 1
