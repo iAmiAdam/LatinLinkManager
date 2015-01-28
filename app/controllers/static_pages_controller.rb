@@ -5,14 +5,18 @@ class StaticPagesController < ApplicationController
 
 		date = Date.today
 		month = date.strftime('%m')
+		year = date.strftime('%Y')
 		continue = true
 
 		while continue 
-			time = Time.new(Time.now.year, month)
+			time = Time.new(year, month)
 			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
 			if @projects.size > 0
 				tempmonth = month.to_f
 				tempmonth -= 1
+				if (tempmonth == 0)
+					tempmonth = 12
+					year -= 1
 				month = tempmonth.to_s
 			else 
 				@months = month.to_i + 1
