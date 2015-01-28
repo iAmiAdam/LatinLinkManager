@@ -8,7 +8,7 @@ class StaticPagesController < ApplicationController
 		continue = true
 
 		while continue 
-			time = Time.new(Time.now.year, month)
+			time = Time.new(Time.now.year, Time.now.month)
 			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
 			if @projects.size > 0
 				tempmonth = month.to_f
