@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
 
 		while continue 
 			time = Time.new(year, month)
+			@months = 0
 			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
 			if @projects.size > 0
 				tempmonth = month.to_f
@@ -20,16 +21,16 @@ class StaticPagesController < ApplicationController
 					tempyear -= 1 
 					year = tempyear.to_s
 				end
+				@months++
 				month = tempmonth.to_s
 			else 
-				@months = month.to_i + 1
 				continue = false
 			end
 		end
 
 
 		if (params[:month])
-			time = Time.new(Time.now.year, params[:month])
+			time = Time.new(params[:year], params[:month])
 			@projects = Project.where(:created_at => time.beginning_of_month..time.end_of_month).order("updated_at DESC")
 			@deadlines = Project.where(:deadline => time.beginning_of_month..time.end_of_month).order("deadline DESC")
 			@open = Project.where(:deadline => time.beginning_of_month..time.end_of_month, :closed => false).order("deadline DESC")
